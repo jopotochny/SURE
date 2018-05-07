@@ -26,7 +26,6 @@ class RandomComputer:
         if(not(self.flags[0] or self.flags[1] or self.flags[2]) or self.timer == 0): # then flags not set or timer ran out
             randNum1 = self.randomClass.choice([1, 2, 3, 4, 5, 6, 7, 8])
             randNum2 = self.randomClass.choice([1, 2, 3, 4, 5, 6, 7, 8])
-            print(str(randNum1) + ", " + str(randNum2))
             if(self.player == 1):
                 if (randNum1 == 1 or randNum1 == 2 or randNum1 == 6):
                     self.flags[0] = False
