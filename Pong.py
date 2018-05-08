@@ -216,8 +216,8 @@ while True:
     #     previousFrameName = new_images_path + image_base_name + str(initial_file_count) + file_extension
     #     initial_file_count += 1
     #     pygame.image.save(window, previousFrameName)
-        print(torch.from_numpy(np.flip(pygame.surfarray.pixels3d(window).transpose(2, 1, 0), axis=0).copy()).size())
-        pygame.display.update()
+    print(torch.from_numpy(np.flip(pygame.surfarray.pixels3d(window).transpose(2, 1, 0), axis=0).copy()).size())
+    pygame.display.update()
     #     nextFrameName = new_images_path + image_base_name + str(initial_file_count) + file_extension
     #     pygame.image.save(window, nextFrameName)
     #     dataTuple = (leftInput, rightInput, previousFrameName, nextFrameName)

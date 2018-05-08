@@ -25,7 +25,7 @@ fps = pygame.time.Clock()
 
 Transition = namedtuple('Transition',
                             ('state', 'action', 'next_state', 'reward'))
-BATCH_SIZE = 128
+BATCH_SIZE = 64
 GAMMA = 0.999
 EPS_START = 0.9
 EPS_END = 0.05
@@ -41,13 +41,13 @@ class DQN(nn.Module):
 
     def __init__(self):
         super(DQN, self).__init__()
-        self.conv1 = nn.Conv2d(3, 16, kernel_size=5, stride=2)
+        self.conv1 = nn.Conv2d(3, 16, kernel_size=5, stride=5)
         self.bn1 = nn.BatchNorm2d(16)
-        self.conv2 = nn.Conv2d(16, 32, kernel_size=5, stride=2)
+        self.conv2 = nn.Conv2d(16, 32, kernel_size=5, stride=5)
         self.bn2 = nn.BatchNorm2d(32)
-        self.conv3 = nn.Conv2d(32, 32, kernel_size=5, stride=2)
+        self.conv3 = nn.Conv2d(32, 32, kernel_size=5, stride=5)
         self.bn3 = nn.BatchNorm2d(32)
-        self.head = nn.Linear(448, 2)
+        self.head = nn.Linear(384, 2)
 
     def forward(self, x):
         x = F.relu(self.bn1(self.conv1(x)))
@@ -82,9 +82,10 @@ target_net = DQN().to(device)
 target_net.load_state_dict(policy_net.state_dict())
 target_net.eval()
 optimizer = optim.RMSprop(policy_net.parameters())
-memory = ReplayMemory(10000)
+memory = ReplayMemory(500)
 
 def optimize_model():
+    # print("Optimizing")
     if len(memory) < BATCH_SIZE:
         return
     transitions = memory.sample(BATCH_SIZE)
@@ -125,6 +126,7 @@ steps_done = 0
 
 
 def select_action(state):
+    # print("Selecting Action")
     global steps_done
     sample = random.random()
     eps_threshold = EPS_END + (EPS_START - EPS_END) * \
@@ -159,32 +161,33 @@ last_l_score = 0
 last_r_score = 0
 
 def calculateReward(player):
+    # print("Calculating Reward")
     global l_score, r_score, last_l_score, last_r_score
     if(player == 1): # then we are left paddle
         if(last_l_score < l_score): # then we scored a point since we last checked
             last_l_score = l_score
-            return torch.tensor([1])
+            return torch.tensor([1], dtype=torch.float)
         elif(last_r_score < r_score): # then we have been scored on
             last_r_score = r_score
-            return torch.tensor([-1])
+            return torch.tensor([-1], dtype=torch.float)
         else: # score hasn't changed
-            return torch.tensor([0])
+            return torch.tensor([0], dtype=torch.float)
     else:
         if (last_r_score < r_score):  # then we scored a point since we last checked
             last_r_score = r_score
-            return torch.tensor([1])
+            return torch.tensor([1], dtype=torch.float)
         elif (last_l_score < l_score):  # then we have been scored on
             last_l_score = l_score
-            return torch.tensor([-1])
+            return torch.tensor([-1], dtype=torch.float)
         else:  # score hasn't changed
-            return torch.tensor([0])
+            return torch.tensor([0], dtype=torch.float)
 
 def performAction(action, player):
     if(player == 1): # then we are left paddle
         up = pygame.K_z
         down = pygame.K_s
         if(action == 0): # then we move up
-            new_event = pygame.event.Event(pygame.KEYUP, {up: up})
+            new_event = pygame.event.Event(pygame.KEYDOWN, {up: up})
             new_event.key = up
             pygame.event.post(new_event)
         else: # action = 1 and we move down
@@ -195,7 +198,7 @@ def performAction(action, player):
         up = pygame.K_UP
         down = pygame.K_DOWN
         if (action == 0):  # then we move up
-            new_event = pygame.event.Event(pygame.KEYUP, {up: up})
+            new_event = pygame.event.Event(pygame.KEYDOWN, {up: up})
             new_event.key = up
             pygame.event.post(new_event)
         else:  # action = 1 and we move down
@@ -383,72 +386,72 @@ def plot_durations():
         display.display(plt.gcf())
 
 
-while True:
-    for i_episode in range(num_episodes):
+
+for i_episode in range(num_episodes):
+    draw(window)
+    # computer1.update(ball_pos, paddle1_pos)
+    # computer2.update(ball_pos, paddle2_pos)
+    window.lock()
+    last_screen = np.ascontiguousarray(np.flip(pygame.surfarray.pixels3d(window).transpose(2, 1, 0), axis=0).copy(), dtype=np.float32)
+    window.unlock()
+    last_screen = torch.from_numpy(last_screen).unsqueeze(0).to(device)
+    current_screen = last_screen
+    state = current_screen - last_screen
+    for t in count():
         draw(window)
-
-        # computer1.update(ball_pos, paddle1_pos)
-        # computer2.update(ball_pos, paddle2_pos)
-        last_screen = np.ascontiguousarray(np.flip(pygame.surfarray.pixels3d(window).transpose(2, 1, 0), axis=0).copy(), dtype=np.float32)
-        last_screen = torch.from_numpy(last_screen).unsqueeze(0).to(device)
-        print(last_screen.size())
-        current_screen = last_screen
-        state = current_screen - last_screen
-        for t in count():
-            # Select and perform an action
-            action = select_action(state)
-            reward = calculateReward(player=1).item()
-            reward = torch.tensor([reward], device=device)
-            performAction(action, player=1)
-            computer2.update()
-            # Observe new state
-            last_screen = current_screen
-            for event in pygame.event.get():
-
-                if event.type == pygame.KEYDOWN:
-                    keydown(event)
-                elif event.type == pygame.KEYUP:
-                    keyup(event)
-                elif event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-            pygame.display.update()
-            del current_screen
-            current_screen = np.ascontiguousarray(np.flip(pygame.surfarray.pixels3d(window).transpose(2, 1, 0), axis=0).copy(), dtype=np.float32)
-            current_screen = torch.from_numpy(current_screen).unsqueeze(0).to(device)
-            done = isDone()
-            if not done:
-                next_state = current_screen - last_screen
-            else:
-                next_state = None
-
-            # Store the transition in memory
-            memory.push(state, action, next_state, reward)
-
-            # Move to the next state
-            state = next_state
-
-            # Perform one step of the optimization (on the target network)
-            optimize_model()
-            del last_screen
-            if done:
-                episode_durations.append(t + 1)
-                plot_durations()
-                break
-            # Update the target network
-        if i_episode % TARGET_UPDATE == 0:
-            target_net.load_state_dict(policy_net.state_dict())
-
-
-        # if(flag):
-        #     previousFrameName = new_images_path + image_base_name + str(initial_file_count) + file_extension
-        #     initial_file_count += 1
-        #     pygame.image.save(window, previousFrameName)
-        #     nextFrameName = new_images_path + image_base_name + str(initial_file_count) + file_extension
-        #     pygame.image.save(window, nextFrameName)
-        #     dataTuple = (leftInput, rightInput, previousFrameName, nextFrameName)
-        #     csvFile = open(new_images_path+"controls.csv", "w")
-        #     csvFile.write(str(dataTuple) + "\n")
-        #     initial_file_count += 1
-        #     flag = False
+        # Select and perform an action
+        action = select_action(state)
+        reward = calculateReward(player=1).item()
+        reward = torch.tensor([reward], device=device)
+        performAction(action, player=1)
+        computer2.update()
+        # Observe new state
+        last_screen = current_screen
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                keydown(event)
+            elif event.type == pygame.KEYUP:
+                keyup(event)
+            elif event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+        pygame.display.update()
         fps.tick(60)
+        window.lock()
+        current_screen = np.ascontiguousarray(np.flip(pygame.surfarray.pixels3d(window).transpose(2, 1, 0), axis=0).copy(), dtype=np.float32)
+        window.unlock()
+        current_screen = torch.from_numpy(current_screen).unsqueeze(0).to(device)
+        done = isDone()
+        if not done:
+            next_state = current_screen - last_screen
+        else:
+            next_state = None
+
+        # Store the transition in memory
+        memory.push(state, action, next_state, reward)
+
+        # Move to the next state
+        state = next_state
+
+        # Perform one step of the optimization (on the target network)
+        optimize_model()
+        if done:
+            episode_durations.append(t + 1)
+            plot_durations()
+            break
+        # Update the target network
+    if i_episode % TARGET_UPDATE == 0:
+        target_net.load_state_dict(policy_net.state_dict())
+
+
+    # if(flag):
+    #     previousFrameName = new_images_path + image_base_name + str(initial_file_count) + file_extension
+    #     initial_file_count += 1
+    #     pygame.image.save(window, previousFrameName)
+    #     nextFrameName = new_images_path + image_base_name + str(initial_file_count) + file_extension
+    #     pygame.image.save(window, nextFrameName)
+    #     dataTuple = (leftInput, rightInput, previousFrameName, nextFrameName)
+    #     csvFile = open(new_images_path+"controls.csv", "w")
+    #     csvFile.write(str(dataTuple) + "\n")
+    #     initial_file_count += 1
+    #     flag = False
