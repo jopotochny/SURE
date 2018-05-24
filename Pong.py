@@ -3,14 +3,24 @@
 
 import os
 import random
+from collections import namedtuple
 import pygame
 import sys
 from pygame import *
 import Computer
 import pandas as pd
+import numpy as np
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import torch.nn.functional as F
+import torchvision.transforms as T
+from itertools import count
 import RandomComputer
 pygame.init()
 fps = pygame.time.Clock()
+
+
 
 
 WHITE = (255, 255, 255)
@@ -207,7 +217,8 @@ while True:
     #     previousFrameName = new_images_path + image_base_name + str(initial_file_count) + file_extension
     #     initial_file_count += 1
     #     pygame.image.save(window, previousFrameName)
-        pygame.display.update()
+    print(torch.from_numpy(np.flip(pygame.surfarray.pixels3d(window).transpose(2, 1, 0), axis=0).copy()).size())
+    pygame.display.update()
     #     nextFrameName = new_images_path + image_base_name + str(initial_file_count) + file_extension
     #     pygame.image.save(window, nextFrameName)
     #     dataTuple = (leftInput, rightInput, previousFrameName, nextFrameName)
