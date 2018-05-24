@@ -38,11 +38,12 @@ window = pygame.display.set_mode((WIDTH, HEIGHT), 0, 32)
 pygame.display.set_caption('Daylight Pong')
 
 # image file base name
-new_images_path = "C:\\Users\\Joseph\\PycharmProjects\\SURE\\dataset\\"
-old_images_path = "C:\\Users\\Joseph\\PycharmProjects\\Pytorch_Data_Loading_Tutorial\\faces"
-image_base_name = "image_"
-file_extension = ".jpg"
-initial_file_count = len([f for f in os.listdir(new_images_path)])
+# new_images_path = "C:\\Users\\Joseph\\PycharmProjects\\SURE\\dataset\\"
+# old_images_path = "C:\\Users\\Joseph\\PycharmProjects\\Pytorch_Data_Loading_Tutorial\\faces"
+# image_base_name = "image_"
+# file_extension = ".jpg"
+# initial_file_count = len([f for f in os.listdir(new_images_path)])
+# do some preliminary reinforcement learning stuff- teach to beat pong, etc?
 leftInput = 0
 rightInput = 0
 def ball_init(right):
