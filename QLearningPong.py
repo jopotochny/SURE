@@ -33,7 +33,7 @@ GAMMA = 0.999
 EPS_START = 0.9
 EPS_END = 0.05
 EPS_DECAY = 200
-TARGET_UPDATE = 2
+TARGET_UPDATE = 50
 steps_done = 0
 saveLength = 0
 
@@ -112,8 +112,8 @@ def main():
     global args
     args = parser.parse_args()
     # if gpu is to be used
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    # device = torch.device("cpu")
+    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cpu")
     policy_net = DQN().to(device)
     target_net = DQN().to(device)
     optimizer = optim.RMSprop(policy_net.parameters())
@@ -181,7 +181,9 @@ def main():
         steps_done += 1
         if sample > eps_threshold:
             with torch.no_grad():
-                return policy_net(state).max(1)[1].view(1, 1)
+                #return policy_net(state).max(1)[1].view(1, 1)
+                #Double DQN, select action from policy_net
+                action = policy_net(state).max(1)[1].view(1, 1)
         else:
             return torch.tensor([[random.randrange(2)]], device=device, dtype=torch.long)
 
@@ -462,13 +464,14 @@ def main():
             if done:
                 episode_durations.append(t + 1)
                 plot_durations()
+                save_checkpoint({'episodes': episode_durations,
+                                 'state_dict': target_net.state_dict(),
+                                 'optimizer': optimizer.state_dict()}, PATH + "checkpoint.pt")
                 break
             # Update the target network
         if i_episode % TARGET_UPDATE == 0:
             target_net.load_state_dict(policy_net.state_dict())
-            save_checkpoint({'episodes': episode_durations,
-                             'state_dict': target_net.state_dict(),
-                             'optimizer': optimizer.state_dict()}, PATH+"checkpoint.pt")
+
 
         # if(flag):
         #     previousFrameName = new_images_path + image_base_name + str(initial_file_count) + file_extension
