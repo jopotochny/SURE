@@ -22,6 +22,8 @@ import torchvision.transforms as T
 from itertools import count
 import RandomComputer
 import Computer
+
+
 pygame.init()
 fps = pygame.time.Clock()
 
@@ -112,8 +114,8 @@ def main():
     global args
     args = parser.parse_args()
     # if gpu is to be used
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    # device = torch.device("cpu")
+    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cpu")
     policy_net = DQN().to(device)
     target_net = DQN().to(device)
     # optimizer = optim.RMSprop(policy_net.parameters())
@@ -150,6 +152,7 @@ def main():
                                            if s is not None])
         state_batch = torch.cat(batch.state)  # 128 images of size (1, 3, 40, 80)
         action_batch = torch.cat(batch.action)
+        print(batch.reward)
         reward_batch = torch.cat(batch.reward)
 
         # Compute Q(s_t, a) - the model computes Q(s_t), then we select the
