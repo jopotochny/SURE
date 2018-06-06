@@ -112,11 +112,12 @@ def main():
     global args
     args = parser.parse_args()
     # if gpu is to be used
-    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    device = torch.device("cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # device = torch.device("cpu")
     policy_net = DQN().to(device)
     target_net = DQN().to(device)
-    optimizer = optim.RMSprop(policy_net.parameters())
+    # optimizer = optim.RMSprop(policy_net.parameters())
+    optimizer = optim.Adam(policy_net.parameters(), lr=1e-4)
     episode_durations = []
     if args.resume:
         if os.path.isfile(args.resume):
@@ -131,7 +132,7 @@ def main():
         target_net.load_state_dict(policy_net.state_dict())
         target_net.eval()
 
-    memory = ReplayMemory(5000)
+    memory = ReplayMemory(2500)
 
     def optimize_model():
         # print("Optimizing")
@@ -181,9 +182,7 @@ def main():
         steps_done += 1
         if sample > eps_threshold:
             with torch.no_grad():
-                #return policy_net(state).max(1)[1].view(1, 1)
-                #Double DQN, select action from policy_net
-                action = policy_net(state).max(1)[1].view(1, 1)
+                return policy_net(state).max(1)[1].view(1, 1)
         else:
             return torch.tensor([[random.randrange(2)]], device=device, dtype=torch.long)
 
@@ -397,7 +396,7 @@ def main():
         plt.ylabel('Duration')
         plt.plot(durations_t.numpy())
         # Take 100 episode averages and plot them too
-        if len(durations_t) >= 40:
+        if len(durations_t) >= 100:
             means = durations_t.unfold(0, 100, 1).mean(1).view(-1)
             means = torch.cat((torch.zeros(99), means))
             plt.plot(means.numpy())
