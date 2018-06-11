@@ -8,6 +8,7 @@ import pygame
 import math
 import sys
 import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from pygame import surfarray, key, event, display, time, locals
 import Computer
@@ -29,7 +30,7 @@ Transition = namedtuple('Transition',
                             ('state', 'action', 'next_state', 'reward'))
 PATH = "/home/josephp/projects/def-dnowrouz/josephp/Pong/"
 BATCH_SIZE = 128
-GAMMA = 0.999
+GAMMA = 0.99
 EPS_START = 0.9
 EPS_END = 0.05
 EPS_DECAY = 200
@@ -52,13 +53,17 @@ class DQN(nn.Module):
 
     def __init__(self):
         super(DQN, self).__init__()
-        self.conv1 = nn.Conv2d(3, 16, kernel_size=5, stride=5)
+        self.conv1 = nn.Conv2d(3, 16, kernel_size=2, stride=2)
         self.bn1 = nn.BatchNorm2d(16)
-        # self.conv2 = nn.Conv2d(16, 32, kernel_size=5, stride=4)
-        # self.bn2 = nn.BatchNorm2d(32)
-        # self.conv3 = nn.Conv2d(32, 32, kernel_size=5, stride=2)
-        # self.bn3 = nn.BatchNorm2d(32)
-        self.head = nn.Linear(1728, 3)
+        self.conv2 = nn.Conv2d(16, 32, kernel_size=2, stride=2)
+        self.bn2 = nn.BatchNorm2d(32)
+        self.conv3 = nn.Conv2d(32, 64, kernel_size=2, stride=2)
+        self.bn3 = nn.BatchNorm2d(64)
+        self.conv4 = nn.Conv2d(64, 64, kernel_size=3, stride=1)
+        self.bn4 = nn.BatchNorm2d(64)
+        self.conv5 = nn.Conv2d(64, 128, kernel_size=3, stride=1)
+        self.bn5 = nn.BatchNorm2d(128)
+        self.head = nn.Linear(1024, 3)
         # self.head = nn.DataParallel(self.head)
         # self.conv1 = nn.DataParallel(self.conv1)
         # self.bn3 = nn.DataParallel(self.bn3)
@@ -69,8 +74,10 @@ class DQN(nn.Module):
 
     def forward(self, x):
         x = F.relu(self.bn1(self.conv1(x)))
-        # x = F.relu(self.bn2(self.conv2(x)))
-        # x = F.relu(self.bn3(self.conv3(x)))
+        x = F.relu(self.bn2(self.conv2(x)))
+        x = F.relu(self.bn3(self.conv3(x)))
+        x = F.relu(self.bn4(self.conv4(x)))
+        x = F.relu(self.bn5(self.conv5(x)))
         return self.head(x.view(x.size(0), -1))
 
 class ReplayMemory(object):
@@ -96,13 +103,14 @@ def main():
     global args
     args = parser.parse_args()
     # if gpu is to be used
-    #device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    device = torch.device("cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # device = torch.device("cpu")
     policy_net = DQN().to(device)
     target_net = DQN().to(device)
     # optimizer = optim.RMSprop(policy_net.parameters())
     optimizer = optim.Adam(policy_net.parameters(), lr=1e-4)
     episode_durations = []
+    scores = []
     if args.resume:
         if os.path.isfile(args.resume):
             print("=> loading checkpoint '{}'".format(args.resume))
@@ -111,12 +119,13 @@ def main():
             target_net.load_state_dict(policy_net.state_dict())
             optimizer.load_state_dict(checkpoint['optimizer'])
             episode_durations = checkpoint['episodes']
+            scores = checkpoint['scores']
             target_net.eval()
     else:
         target_net.load_state_dict(policy_net.state_dict())
         target_net.eval()
 
-    memory = ReplayMemory(2500)
+    memory = ReplayMemory(10000)
 
     def correctPixelArray(nparray):
         return np.ascontiguousarray(np.flip(nparray.transpose(2, 1, 0), axis=0), dtype=np.float32)
@@ -133,10 +142,9 @@ def main():
                                                 batch.next_state)), device=device, dtype=torch.uint8)
         non_final_next_states = torch.cat([s for s in batch.next_state
                                            if s is not None])
-        state_batch = torch.cat(batch.state)
-        action_batch = torch.cat(batch.action)
-        reward_batch = torch.cat(batch.reward)
-
+        state_batch = torch.cat(batch.state).to(device)
+        action_batch = torch.cat(batch.action).to(device)
+        reward_batch = torch.cat(batch.reward).to(device)
         # Compute Q(s_t, a) - the model computes Q(s_t), then we select the
         # columns of actions taken
         state_action_values = policy_net(state_batch).gather(1, action_batch)
@@ -146,7 +154,6 @@ def main():
         next_state_values[non_final_mask] = target_net(non_final_next_states).max(1)[0].detach()
         # Compute the expected Q values
         expected_state_action_values = (next_state_values * GAMMA) + reward_batch
-
         # Compute Huber loss
         loss = F.smooth_l1_loss(state_action_values, expected_state_action_values.unsqueeze(1))
 
@@ -174,11 +181,27 @@ def main():
     def save_checkpoint(state, filename):
         torch.save(state, filename)
 
-    num_episodes = 100
+    num_episodes = 1000
 
+    def plot_score():
+        global saveLength
+        fig = plt.figure(2)
+        plt.clf()
+        score_t = torch.tensor(scores, dtype=torch.float)
+        plt.title('Training...')
+        plt.xlabel('Episode')
+        plt.ylabel('Score')
+        plt.plot(score_t.numpy())
+        if len(score_t) > saveLength:  # save plot every 10 episodes
+            saveLength = saveLength + 10
+            plt.savefig("/home/josephp/projects/def-dnowrouz/josephp/Pong/plt.png")
+            plt.close(fig)
+        if is_ipython:
+            display.clear_output(wait=True)
+            display.display(plt.gcf())
     def plot_durations():
         global saveLength
-        plt.figure(2)
+        fig = plt.figure(2)
         plt.clf()
         durations_t = torch.tensor(episode_durations, dtype=torch.float)
         plt.title('Training...')
@@ -195,11 +218,14 @@ def main():
         if len(durations_t) > saveLength:  # save plot every 50 episodes
             saveLength = saveLength + 10
             plt.savefig("/home/josephp/projects/def-dnowrouz/josephp/Pong/plt.png")
+            plt.close(fig)
         if is_ipython:
             display.clear_output(wait=True)
             display.display(plt.gcf())
-    for i_episode in range(num_episodes):
-        print("Episode = " + str(i_episode))
+
+    episodes_left = num_episodes - len(episode_durations)
+    for i_episode in range(episodes_left):
+        print("Episode = " + str(len(episode_durations)))
         last_screen = correctPixelArray(p.getScreenRGB())
         last_screen = torch.from_numpy(last_screen).unsqueeze(0).to(device)
         current_screen = last_screen
@@ -210,7 +236,7 @@ def main():
             last_screen = current_screen
             current_screen = correctPixelArray(p.getScreenRGB())
             current_screen = torch.from_numpy(current_screen).unsqueeze(0).to(device)
-            done =p.game_over()
+            done = p.game_over()
             if not done:  # check if the game is over
                 next_state = current_screen - last_screen
             else:
@@ -220,15 +246,18 @@ def main():
 
             # Move to the next state
             state = next_state
-
             # Perform one step of the optimization (on the target network)
             optimize_model()
+
             if done:
+
                 episode_durations.append(t + 1)
-                plot_durations()
+                scores.append(p.score())
+                plot_score()
+                # plot_durations()
                 save_checkpoint({'episodes': episode_durations,
                                      'state_dict': target_net.state_dict(),
-                                     'optimizer': optimizer.state_dict()}, PATH + "checkpoint.pt")
+                                     'optimizer': optimizer.state_dict(), 'scores': scores}, PATH + "checkpoint.pt")
                 p.reset_game()
                 break
             # Update the target network
