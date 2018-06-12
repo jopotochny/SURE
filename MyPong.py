@@ -1,3 +1,4 @@
+from builtins import range
 from ple.games.pong import Pong
 from ple import PLE
 import os
@@ -19,6 +20,7 @@ import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
 import torchvision.transforms as T
+from torch.autograd import Variable
 from itertools import count
 os.putenv('SDL_VIDEODRIVER', 'fbcon')
 os.environ["SDL_VIDEODRIVER"] = "dummy"
@@ -53,31 +55,19 @@ class DQN(nn.Module):
 
     def __init__(self):
         super(DQN, self).__init__()
-        self.conv1 = nn.Conv2d(3, 16, kernel_size=2, stride=2)
+        self.conv1 = nn.Conv2d(3, 16, kernel_size=3, stride=2)
         self.bn1 = nn.BatchNorm2d(16)
-        self.conv2 = nn.Conv2d(16, 32, kernel_size=2, stride=2)
+        self.conv2 = nn.Conv2d(16, 32, kernel_size=3, stride=2)
         self.bn2 = nn.BatchNorm2d(32)
-        self.conv3 = nn.Conv2d(32, 64, kernel_size=2, stride=2)
-        self.bn3 = nn.BatchNorm2d(64)
-        self.conv4 = nn.Conv2d(64, 64, kernel_size=3, stride=1)
-        self.bn4 = nn.BatchNorm2d(64)
-        self.conv5 = nn.Conv2d(64, 128, kernel_size=3, stride=1)
-        self.bn5 = nn.BatchNorm2d(128)
-        self.head = nn.Linear(1024, 3)
-        # self.head = nn.DataParallel(self.head)
-        # self.conv1 = nn.DataParallel(self.conv1)
-        # self.bn3 = nn.DataParallel(self.bn3)
-        # self.bn1 = nn.DataParallel(self.bn1)
-        # self.conv2 = nn.DataParallel(self.conv2)
-        # self.bn2 = nn.DataParallel(self.bn2)
-        # self.conv3 = nn.DataParallel(self.conv3)
+        self.conv3 = nn.Conv2d(32, 32, kernel_size=3, stride=2)
+        self.bn3 = nn.BatchNorm2d(32)
+        self.head = nn.Linear(1120, 3)
 
     def forward(self, x):
+        x = x.float() / 256
         x = F.relu(self.bn1(self.conv1(x)))
         x = F.relu(self.bn2(self.conv2(x)))
         x = F.relu(self.bn3(self.conv3(x)))
-        x = F.relu(self.bn4(self.conv4(x)))
-        x = F.relu(self.bn5(self.conv5(x)))
         return self.head(x.view(x.size(0), -1))
 
 class ReplayMemory(object):
@@ -107,8 +97,8 @@ def main():
     # device = torch.device("cpu")
     policy_net = DQN().to(device)
     target_net = DQN().to(device)
-    # optimizer = optim.RMSprop(policy_net.parameters())
-    optimizer = optim.Adam(policy_net.parameters(), lr=1e-4)
+    optimizer = optim.RMSprop(policy_net.parameters(), lr=0.00025, eps=0.01, momentum=0.95)
+    # optimizer = optim.Adam(policy_net.parameters(), lr=1e-4)
     episode_durations = []
     scores = []
     if args.resume:
@@ -125,7 +115,7 @@ def main():
         target_net.load_state_dict(policy_net.state_dict())
         target_net.eval()
 
-    memory = ReplayMemory(10000)
+    memory = ReplayMemory(100000)
 
     def correctPixelArray(nparray):
         return np.ascontiguousarray(np.flip(nparray.transpose(2, 1, 0), axis=0), dtype=np.float32)
@@ -133,7 +123,6 @@ def main():
         if len(memory) < BATCH_SIZE:
             return
         transitions = memory.sample(BATCH_SIZE)
-
         # Transpose the batch (see http://stackoverflow.com/a/19343/3343043 for
         # detailed explanation).
         batch = Transition(*zip(*transitions))
@@ -159,6 +148,7 @@ def main():
 
         # Optimize the model
         optimizer.zero_grad()
+
         loss.backward()
         for param in policy_net.parameters():
             param.grad.data.clamp_(-1, 1)
@@ -232,20 +222,23 @@ def main():
         state = current_screen - last_screen
         for t in count():
             action = select_action(state)
-            reward = torch.Tensor([p.act(ACTION_SET[action])])
-            last_screen = current_screen
-            current_screen = correctPixelArray(p.getScreenRGB())
-            current_screen = torch.from_numpy(current_screen).unsqueeze(0).to(device)
-            done = p.game_over()
-            if not done:  # check if the game is over
-                next_state = current_screen - last_screen
-            else:
-                next_state = None
-            # Store the transition in memory
-            memory.push(state, action, next_state, reward)
+            for episode in range(4): # use same action for every 4 frames, could also feed the four states into the NN?
 
-            # Move to the next state
-            state = next_state
+                reward = torch.Tensor([p.act(ACTION_SET[action])])
+                last_screen = current_screen
+                current_screen = correctPixelArray(p.getScreenRGB())
+                current_screen = torch.from_numpy(current_screen).unsqueeze(0).to(device)
+                done = p.game_over()
+                if not done:  # check if the game is over
+                    next_state = current_screen - last_screen
+                else:
+                    next_state = None
+                    break
+                # Store the transition in memory
+                memory.push(state, action, next_state, reward)
+
+                # Move to the next state
+                state = next_state
             # Perform one step of the optimization (on the target network)
             optimize_model()
 
