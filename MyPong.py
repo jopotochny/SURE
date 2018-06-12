@@ -184,7 +184,7 @@ def main():
         plt.plot(score_t.numpy())
         if len(score_t) > saveLength:  # save plot every 10 episodes
             saveLength = saveLength + 10
-            plt.savefig("/home/josephp/projects/def-dnowrouz/josephp/Pong/plt.png")
+            plt.savefig("/home/josephp/projects/def-dnowrouz/josephp/Pong/scoreplt.png")
             plt.close(fig)
         if is_ipython:
             display.clear_output(wait=True)
@@ -207,7 +207,7 @@ def main():
         plt.pause(0.001)  # pause a bit so that plots are updated
         if len(durations_t) > saveLength:  # save plot every 50 episodes
             saveLength = saveLength + 10
-            plt.savefig("/home/josephp/projects/def-dnowrouz/josephp/Pong/plt.png")
+            plt.savefig("/home/josephp/projects/def-dnowrouz/josephp/Pong/durationsplt.png")
             plt.close(fig)
         if is_ipython:
             display.clear_output(wait=True)
@@ -247,7 +247,7 @@ def main():
                 episode_durations.append(t + 1)
                 scores.append(p.score())
                 plot_score()
-                # plot_durations()
+                plot_durations()
                 save_checkpoint({'episodes': episode_durations,
                                      'state_dict': target_net.state_dict(),
                                      'optimizer': optimizer.state_dict(), 'scores': scores}, PATH + "checkpoint.pt")
