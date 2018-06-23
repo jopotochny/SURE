@@ -21,7 +21,10 @@ import torch.optim as optim
 import torch.nn.functional as F
 import torchvision.transforms as T
 from torch.autograd import Variable
+from pathlib import Path
+from PIL import Image
 from itertools import count
+import seaborn as sns
 os.putenv('SDL_VIDEODRIVER', 'fbcon')
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 
@@ -38,12 +41,13 @@ EPS_END = 0.05
 EPS_DECAY = 200
 TARGET_UPDATE = 50
 steps_done = 0
-saveLength = 0
+scoreSaveLength = 0
+durationSaveLength = 0
 game = Pong()
 p = PLE(game, fps=30, display_screen=True, force_fps=False)
 p.init()
 ACTION_SET = p.getActionSet()
-
+actions = []
 parser = argparse.ArgumentParser(description='QLearningPong')
 parser.add_argument("--resume", default='', type=str, metavar='PATH', help='path to latest checkpoint')
 # set up matplotlib
@@ -91,16 +95,18 @@ class ReplayMemory(object):
         return len(self.memory)
 def main():
     global args
+    global actions
     args = parser.parse_args()
     # if gpu is to be used
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    # device = torch.device("cpu")
+    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cpu")
     policy_net = DQN().to(device)
     target_net = DQN().to(device)
     optimizer = optim.RMSprop(policy_net.parameters(), lr=0.00025, eps=0.01, momentum=0.95)
     # optimizer = optim.Adam(policy_net.parameters(), lr=1e-4)
     episode_durations = []
     scores = []
+
     if args.resume:
         if os.path.isfile(args.resume):
             print("=> loading checkpoint '{}'".format(args.resume))
@@ -117,6 +123,15 @@ def main():
 
     memory = ReplayMemory(100000)
 
+    def saveFrame(previousName, currentName, action, reward):
+        file = Path("{}/practiceFrames/Transitions.csv".format(PATH))
+        if file.exists():
+            with open(file, "a") as f:
+                f.write("\n{},{},{},{}".format(previousName, currentName, action, reward))
+        else:
+            file.touch() # create the csv
+            with open(file, "a") as f:
+                f.write("\n{},{},{},{}".format(previousName, currentName, action, reward))
     def correctPixelArray(nparray):
         return np.ascontiguousarray(np.flip(nparray.transpose(2, 1, 0), axis=0), dtype=np.float32)
     def optimize_model():
@@ -143,6 +158,8 @@ def main():
         next_state_values[non_final_mask] = target_net(non_final_next_states).max(1)[0].detach()
         # Compute the expected Q values
         expected_state_action_values = (next_state_values * GAMMA) + reward_batch
+        print(action_batch.shape)
+
         # Compute Huber loss
         loss = F.smooth_l1_loss(state_action_values, expected_state_action_values.unsqueeze(1))
 
@@ -163,9 +180,12 @@ def main():
         steps_done += 1
         if sample > eps_threshold:
             with torch.no_grad():
+                actions.append(policy_net(state).max(1)[1].view(1, 1).data)
                 return policy_net(state).max(1)[1].view(1, 1)
         else:
-            return torch.tensor([[random.randrange(3)]], device=device, dtype=torch.long)
+            randomAction = torch.tensor([[random.randrange(3)]], device=device, dtype=torch.long)
+            actions.append(randomAction)
+            return randomAction
 
 
     def save_checkpoint(state, filename):
@@ -174,7 +194,7 @@ def main():
     num_episodes = 1000
 
     def plot_score():
-        global saveLength
+        global scoreSaveLength
         fig = plt.figure(2)
         plt.clf()
         score_t = torch.tensor(scores, dtype=torch.float)
@@ -182,15 +202,15 @@ def main():
         plt.xlabel('Episode')
         plt.ylabel('Score')
         plt.plot(score_t.numpy())
-        if len(score_t) > saveLength:  # save plot every 10 episodes
-            saveLength = saveLength + 10
+        if len(score_t) > scoreSaveLength:  # save plot every 10 episodes
+            saveLength = scoreSaveLength + 10
             plt.savefig("/home/josephp/projects/def-dnowrouz/josephp/Pong/scoreplt.png")
             plt.close(fig)
         if is_ipython:
             display.clear_output(wait=True)
             display.display(plt.gcf())
     def plot_durations():
-        global saveLength
+        global durationSaveLength
         fig = plt.figure(2)
         plt.clf()
         durations_t = torch.tensor(episode_durations, dtype=torch.float)
@@ -205,14 +225,15 @@ def main():
             plt.plot(means.numpy())
 
         plt.pause(0.001)  # pause a bit so that plots are updated
-        if len(durations_t) > saveLength:  # save plot every 50 episodes
-            saveLength = saveLength + 10
+        if len(durations_t) > durationSaveLength:  # save plot every 10 episodes
+            saveLength = durationSaveLength + 10
             plt.savefig("/home/josephp/projects/def-dnowrouz/josephp/Pong/durationsplt.png")
             plt.close(fig)
         if is_ipython:
             display.clear_output(wait=True)
             display.display(plt.gcf())
-
+    saveLimit = 1000
+    saveFlag = 0
     episodes_left = num_episodes - len(episode_durations)
     for i_episode in range(episodes_left):
         print("Episode = " + str(len(episode_durations)))
@@ -223,10 +244,18 @@ def main():
         for t in count():
             action = select_action(state)
             for episode in range(4): # use same action for every 4 frames, could also feed the four states into the NN?
-
+                if (saveFlag == 0):
+                    previousName = str(2000 - saveLimit) + "previous.png"
+                    # p.saveScreen("{}/practiceFrames/{}".format(PATH, previousName))
                 reward = torch.Tensor([p.act(ACTION_SET[action])])
+                if (saveFlag == 0):
+                    currentName = str(2000 - saveLimit) + "current.png"
                 last_screen = current_screen
                 current_screen = correctPixelArray(p.getScreenRGB())
+                if (saveFlag == 0):
+                    # p.saveScreen("{}/practiceFrames/{}".format(PATH, currentName))
+                    # saveFrame(previousName, currentName, action.to("cpu").item(), reward.to("cpu").item())
+                    saveLimit = saveLimit - 1
                 current_screen = torch.from_numpy(current_screen).unsqueeze(0).to(device)
                 done = p.game_over()
                 if not done:  # check if the game is over
@@ -243,11 +272,15 @@ def main():
             optimize_model()
 
             if done:
-
+                saveFlag = 1
                 episode_durations.append(t + 1)
                 scores.append(p.score())
                 plot_score()
                 plot_durations()
+                # plot = sns.distplot(actions)
+                # fig = plot.get_figure()
+                # fig.savefig("{}/{}".format(PATH, str(len(episode_durations)) + "actions_histogram.png"))
+                # actions.clear()# reset the actions buffer
                 save_checkpoint({'episodes': episode_durations,
                                      'state_dict': target_net.state_dict(),
                                      'optimizer': optimizer.state_dict(), 'scores': scores}, PATH + "checkpoint.pt")
