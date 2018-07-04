@@ -53,7 +53,6 @@ actions = []
 losses = []
 parser = argparse.ArgumentParser(description='QLearningPong')
 parser.add_argument("--resume", default='', type=str, metavar='PATH', help='path to latest checkpoint')
-parser.add_argument("--lr", default='', type=float, metavar='LR', help='learning rate')
 # set up matplotlib
 is_ipython = 'inline' in matplotlib.get_backend()
 if is_ipython:
@@ -131,27 +130,23 @@ def main():
     # device = torch.device("cpu")
     policy_net = DQN().to(device)
     target_net = DQN().to(device)
+    optimizer = optim.RMSprop(policy_net.parameters(),  lr=0.0025, alpha=0.9, eps=1e-02, momentum=0.0)
     # optimizer = optim.Adam(policy_net.parameters(), lr=1e-4)
     episode_durations = []
     scores = []
     memory = ReplayMemory(MEMORY_SIZE)
-    learning_rate = 0.01
-    if args.lr:
-        learning_rate = args.lr
     if args.resume:
         if os.path.isfile(args.resume):
             print("=> loading checkpoint '{}'".format(args.resume))
             checkpoint = torch.load(args.resume)
             policy_net.load_state_dict(checkpoint['state_dict'])
             target_net.load_state_dict(checkpoint['target_dict'])
-            optimizer = optim.RMSprop(policy_net.parameters(), lr=learning_rate, alpha=0.9, eps=1e-02, momentum=0.0)
             optimizer.load_state_dict(checkpoint['optimizer'])
             episode_durations = checkpoint['episodes']
             scores = checkpoint['scores']
             steps_done = checkpoint['steps_done']
             target_net.eval()
     else:
-        optimizer = optim.RMSprop(policy_net.parameters(), lr=learning_rate, alpha=0.9, eps=1e-02, momentum=0.0)
         target_net.load_state_dict(policy_net.state_dict())
         target_net.eval()
 
@@ -194,7 +189,7 @@ def main():
 
         # Compute Huber loss
         loss = F.mse_loss(state_action_values, expected_state_action_values.unsqueeze(1))
-        # losses.append(loss)
+        losses.append(loss)
         # Optimize the model
         optimizer.zero_grad()
 
@@ -237,7 +232,7 @@ def main():
         plt.plot(score_t.numpy())
         if len(score_t) > scoreSaveLength:  # save plot every 10 episodes
             saveLength = scoreSaveLength + 10
-            plt.savefig(PATH+str(learning_rate)+"scoreplt.png")
+            plt.savefig(PATH+"skipframesscoreplt.png")
             plt.close(fig)
         if is_ipython:
             display.clear_output(wait=True)
@@ -280,6 +275,10 @@ def main():
         list.reverse()
         list.pop()
         list.reverse()
+    def actFourTimes(action): # act 4 times with the same action
+        for i in range(4):
+            reward = torch.Tensor([p.act(ACTION_SET[action])])
+        return reward # return the 4th reward
     saveLimit = 1000
     saveFlag = 0
     pushCounter = 0
@@ -294,7 +293,7 @@ def main():
         for t in count():
             for i in range(4):
                 action = select_action(torch.stack(current_screens).unsqueeze(0).float().to(device))
-                reward = torch.Tensor([p.act(ACTION_SET[action])])
+                reward = actFourTimes(action)
                 reward = np.clip(reward, -1, 1)
                 done = p.game_over()
                 # Move to the next state
@@ -312,11 +311,11 @@ def main():
                 optimize_model()
 
             if done:
-                # episode_durations.append(t + 1)
+                episode_durations.append(t + 1)
                 scores.append(p.score())
                 plot_score()
-                # plot_durations()
-                # plotLoss()
+                plot_durations()
+                plotLoss()
                 # plot = sns.distplot(actions)
                 # fig = plot.get_figure()
                 # fig.savefig("{}/{}".format(PATH, str(len(episode_durations)) + "actions_histogram.png"))
@@ -324,7 +323,7 @@ def main():
                 save_checkpoint({'episodes': episode_durations,
                                      'state_dict': policy_net.state_dict(),
                                      'target_dict': target_net.state_dict(),
-                                     'optimizer': optimizer.state_dict(), 'scores': scores, 'steps_done':steps_done}, PATH + "checkpoint.pt")
+                                     'optimizer': optimizer.state_dict(), 'scores': scores, 'steps_done':steps_done}, PATH + "skipframescheckpoint.pt")
                 p.reset_game()
                 break
                 # Update the target network

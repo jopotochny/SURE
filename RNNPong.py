@@ -33,8 +33,9 @@ plt.ioff()
 
 Transition = namedtuple('Transition',
                             ('current_screen', 'action', 'next_screen', 'reward'))
-PATH = "/home/josephp/projects/def-dnowrouz/josephp/Pong/SURE/"
+# PATH = "/home/josephp/projects/def-dnowrouz/josephp/Pong/SURE/"
 # PATH = "C:\\Users\\Joseph\\PycharmProjects\\SURE\\"
+PATH = "/home/jopotochny/Documents/SURE/"
 BATCH_SIZE = 64
 MEMORY_SIZE = 5000
 GAMMA = 0.99
@@ -59,49 +60,25 @@ is_ipython = 'inline' in matplotlib.get_backend()
 if is_ipython:
     from IPython import display
 
-class DQN(nn.Module):
+class RNN(nn.Module):
 
-    def __init__(self):
-        super(DQN, self).__init__()
-        # self.conv1 = nn.Conv2d(3, 16, kernel_size=3, stride=2)
-        # self.bn1 = nn.BatchNorm2d(16)
-        # self.conv2 = nn.Conv2d(16, 32, kernel_size=3, stride=2)
-        # self.bn2 = nn.BatchNorm2d(32)
-        # self.conv3 = nn.Conv2d(32, 32, kernel_size=3, stride=2)
-        # self.bn3 = nn.BatchNorm2d(32)
-        # self.head = nn.Linear(1120, 3)
-
-    #     self.main = nn.Sequential(
-    #         nn.Conv2d(3, 32, 4, 2, 0),
-    #         nn.ReLU(inplace=True),
-    #         nn.Conv2d(32, 64, 2, 1, 0),
-    #         nn.ReLU(inplace=True),
-    #         nn.Conv2d(64, 64, 3, 1, 0),
-    #         nn.ReLU(inplace=True),
-    #         nn.Conv2d(64, 512, 3, 2, 0),
-    #         nn.ReLU(inplace=True),
-    #         nn.Conv2d(512, 3, 1, 1),
-    #         nn.Linear(13, 3)
-    # )
+    def __init__(self, input_size, hidden_size, output_size):
+        super(RNN, self).__init__()
+        self.hidden_size = hidden_size
         self.conv1 = nn.Conv2d(4, 8, 4, 2)
-        self.bn1 = nn.BatchNorm2d(8)
-        self.conv2 = nn.Conv2d(8, 16, 2, 1)
-        self.bn2 = nn.BatchNorm2d(16)
-        self.conv3 = nn.Conv2d(16, 32, 3, 1)
-        self.bn3 = nn.BatchNorm2d(32)
-        self.conv4 = nn.Conv2d(32, 32, 3, 2)
-        self.bn4 = nn.BatchNorm2d(32)
-        self.linear1 = nn.Linear(3744, 3)
-        # self.linear2 = nn.Linear(512, 3)
+        self.i2h = nn.Linear(input_size + hidden_size, hidden_size)
+        self.i2o = nn.Linear(input_size + hidden_size, output_size)
+        self.softmax = nn.LogSoftmax(dim=1)
 
-    def forward(self, x):
-        # x = x.float() / 256
-        x = F.relu(self.bn1(self.conv1(x)))
-        x = F.relu(self.bn2(self.conv2(x)))
-        x = F.relu(self.bn3(self.conv3(x)))
-        x = F.relu(self.bn4(self.conv4(x)))
-        x = self.linear1(x.view(x.size(0), -1))
-        return x
+    def forward(self, input, hidden):
+        combined = torch.cat((input, hidden), 1)
+        conv = self.conv1(combined)
+        hidden = self.i2h(combined)
+        output = self.i2o(combined)
+        output = self.softmax(output)
+        return output, hidden
+    def initHidden(self):
+        return torch.zeros(1, self.hidden_size)
 class ReplayMemory(object):
 
     def __init__(self, capacity):
@@ -127,10 +104,13 @@ def main():
     global steps_done
     args = parser.parse_args()
     # if gpu is to be used
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    # device = torch.device("cpu")
-    policy_net = DQN().to(device)
-    target_net = DQN().to(device)
+    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cpu")
+    n_hidden = 128
+    n_inputs = 4
+    n_actions = 3
+    policy_net = RNN(n_inputs, n_hidden, n_actions).to(device)
+    target_net = RNN().to(device)
     # optimizer = optim.Adam(policy_net.parameters(), lr=1e-4)
     episode_durations = []
     scores = []
@@ -166,7 +146,7 @@ def main():
                 f.write("\n{},{},{},{}".format(previousName, currentName, action, reward))
     def correctPixelArray(nparray):
         return np.ascontiguousarray(np.flip(nparray.transpose(2, 1, 0), axis=0), dtype=np.float32)
-    def optimize_model():
+    def optimize_model(hidden):
         if len(memory) < BATCH_SIZE: # I'm using Replay Memory and sampling a batch from it randomly
             return
         transitions = memory.sample(BATCH_SIZE)
@@ -184,8 +164,8 @@ def main():
         reward_batch = torch.cat(batch.reward).to(device)
         # Compute Q(s_t, a) - the model computes Q(s_t), then we select the
         # columns of actions taken
-        state_action_values = policy_net(state_batch).gather(1, action_batch)
-
+        state_action_values, hidden = policy_net(state_batch, hidden)
+        state_action_values = state_action_values.gather(1, action_batch)
         # Compute V(s_{t+1}) for all next states.
         next_state_values = torch.zeros(BATCH_SIZE, device=device)
         next_state_values[non_final_mask] = target_net(non_final_next_states).max(1)[0].detach()
@@ -194,7 +174,7 @@ def main():
 
         # Compute Huber loss
         loss = F.mse_loss(state_action_values, expected_state_action_values.unsqueeze(1))
-        # losses.append(loss)
+        losses.append(loss)
         # Optimize the model
         optimizer.zero_grad()
 
@@ -202,7 +182,7 @@ def main():
         for param in policy_net.parameters():
             param.grad.data.clamp_(-1, 1)
         optimizer.step()
-
+        return hidden
 
     def select_action(current_screen):
         global steps_done
@@ -237,7 +217,7 @@ def main():
         plt.plot(score_t.numpy())
         if len(score_t) > scoreSaveLength:  # save plot every 10 episodes
             saveLength = scoreSaveLength + 10
-            plt.savefig(PATH+str(learning_rate)+"scoreplt.png")
+            plt.savefig(PATH+"scoreplt.png")
             plt.close(fig)
         if is_ipython:
             display.clear_output(wait=True)
@@ -290,7 +270,7 @@ def main():
         print("Episode = " + str(len(episode_durations)))
         while(len(current_screens) < 4):
             current_screens.append(torch.from_numpy(p.getScreenGrayscale()))
-
+        hidden = RNN.initHidden()
         for t in count():
             for i in range(4):
                 action = select_action(torch.stack(current_screens).unsqueeze(0).float().to(device))
@@ -309,14 +289,14 @@ def main():
                     current_screens_t = torch.stack(current_screens).unsqueeze(0).float().to(device)
                     next_Screens_t = torch.stack(next_screens).unsqueeze(0).float().to(device)
                     memory.push(current_screens_t, action, next_Screens_t, reward)
-                optimize_model()
+                hidden = optimize_model(hidden)
 
             if done:
-                # episode_durations.append(t + 1)
+                episode_durations.append(t + 1)
                 scores.append(p.score())
                 plot_score()
-                # plot_durations()
-                # plotLoss()
+                plot_durations()
+                plotLoss()
                 # plot = sns.distplot(actions)
                 # fig = plot.get_figure()
                 # fig.savefig("{}/{}".format(PATH, str(len(episode_durations)) + "actions_histogram.png"))
@@ -324,7 +304,7 @@ def main():
                 save_checkpoint({'episodes': episode_durations,
                                      'state_dict': policy_net.state_dict(),
                                      'target_dict': target_net.state_dict(),
-                                     'optimizer': optimizer.state_dict(), 'scores': scores, 'steps_done':steps_done}, PATH + "checkpoint.pt")
+                                     'optimizer': optimizer.state_dict(), 'scores': scores, 'steps_done':steps_done}, PATH + "rnncheckpoint.pt")
                 p.reset_game()
                 break
                 # Update the target network
