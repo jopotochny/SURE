@@ -60,17 +60,59 @@ is_ipython = 'inline' in matplotlib.get_backend()
 if is_ipython:
     from IPython import display
 
+def getImagePatches(tensor, patchSize):
+    horizontallySplit = torch.split(tensor, int(tensor.shape[1] / patchSize), dim=1)
+    horizontallySplitList = list(horizontallySplit)
+    finalSplitList = []
+    for element in horizontallySplitList:
+        verticallySplit = torch.split(element, int(element.shape[0] / patchSize), dim=0)
+        verticallySplitList = list(verticallySplit)
+        for i in range(len(verticallySplitList)):
+            verticallySplitList[i] = verticallySplitList[i].contiguous().view(1, -1)
+        finalSplitList.append(verticallySplitList)
+    return finalSplitList
+def getVerticalPatches(patchesList, doReverse=False): # gives a list of the vertical patches in L->R top->down order
+    verticalList = []
+    listLength = len(patchesList[0])
+    count = 0
+    while count < listLength:
+        for list in patchesList:
+            verticalList.append(list[count])
+        count += 1
+    if(doReverse):
+        return verticalList.reverse()
+    return verticalList
+def getHorizontalPatches(patchesList, doReverse=False):
+    horizontalList = []
+    for list in patchesList:
+        horizontalList.extend(list)
+    if(doReverse):
+        return horizontalList.reverse()
+    return horizontalList
 class RNN(nn.Module):
 
     def __init__(self, input_size, hidden_size, output_size):
         super(RNN, self).__init__()
         self.hidden_size = hidden_size
-        self.conv1 = nn.Conv2d(4, 8, 4, 2)
+        self.conv1 = nn.Conv2d(input_size + hidden_size, 8, 4, 2)
+        self.VFWD = nn.LSTM(input_size, hidden_size)
+        self.VREV = nn.LSTM(input_size, hidden_size)
+        self.HFWD = nn.LSTM(input_size, hidden_size)
+        self.HREV = nn.LSTM(input_size, hidden_size)
         self.i2h = nn.Linear(input_size + hidden_size, hidden_size)
         self.i2o = nn.Linear(input_size + hidden_size, output_size)
         self.softmax = nn.LogSoftmax(dim=1)
 
     def forward(self, input, hidden):
+        patches = getImagePatches(input, 4)
+        VFWD_patches = getVerticalPatches(patches)
+        VREV_patches = getVerticalPatches(patches, doReverse=True)
+        HFWD_patches = getHorizontalPatches(patches)
+        HREV_patches = getHorizontalPatches(patches, doReverse=True)
+        VFWD_hidden = []
+        VREV_hidden = []
+        for i in range(len(VFWD_patches)):
+           output, hidden = self.VFWD(VFWD_patches[i])
         combined = torch.cat((input, hidden), 1)
         conv = self.conv1(combined)
         hidden = self.i2h(combined)
@@ -144,6 +186,8 @@ def main():
             file.touch() # create the csv
             with open(file, "a") as f:
                 f.write("\n{},{},{},{}".format(previousName, currentName, action, reward))
+
+
     def correctPixelArray(nparray):
         return np.ascontiguousarray(np.flip(nparray.transpose(2, 1, 0), axis=0), dtype=np.float32)
     def optimize_model(hidden):

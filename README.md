@@ -102,10 +102,52 @@ After looking through more closely at the tutorial code, it seems like it alread
 *June 4*
 
 Servers are back up, am now able to run things. I found an [article](https://medium.com/mlreview/speeding-up-dqn-on-pytorch-solving-pong-in-30-minutes-81a1bd2dff55)
-that explains how this guy "solved" pong using a DQN, and I will try using his parameters to see if it helps me. 
+that explains how this guy "solved" pong using a DQN, and I will try using his parameters to see if it helps me.
 
+*June 5-12*
 
+A lot of updates. Using a new Pong environment called [PLE](https://github.com/ntasfi/PyGame-Learning-Environment) for DL. The episodes train MUCH faster now because of it, as it runs headless. Now I have a different problem, the network does not learn. It immediately drops to scoring no points and remains that way forever.
 
+I have been looking for other tutorials such as [this](https://becominghuman.ai/lets-build-an-atari-ai-part-1-dqn-df57e8ff3b26) in order to see if it is a problem with my training loop, however it appears that what I have is very similar to what other people have used.
+
+*June 14*
+
+I have made a simplified version of the code that just learns from one best-of-11 game that I saved the images from. It seems to be able to learn, as the loss decreases very quickly and gets very low.
+![Loss Plot for basic NN approach Training on Saved Images](Images/lossplt.png)
+
+The next step is to use it to actually play Pong and see if it learns anything.
+
+*June 15-20*
+
+I started with the simplified version playing Pong using PLE. As expected, it learned pretty much nothing, as it was missing many features that help DQNs converge.
+
+I started adding these elements one at a time to see if it would improve its performance, such as replayable memory. Unfortunately, the DQN still is failing to master Pong.
+
+*June 21-July 4*
+
+Went back home to visit family, but still worked. I read about a technique where instead of passing single frames, you pass in groups of 4 frames in order to teach the DQN about velocity so that it can tell whether the ball is moving towards or away from it.
+I have implemented this, and it seems like it is better than before. However, it still does not converge. I have also added a second linear layer, and it seems to do a bit better, but again it does not converge. Another technique I have implemented is skipping frames. I only feed every fourth frame to the DQN, as sequential frames generally do not have a large difference between them and it can slow down teaching the DQN.
+
+Here is a graph of my current best-working DQN. I have run it for approximately 10,000 games.
+![Scores for 10,000 Games](Images/0.01twolinearscoreplt.png)
+
+*July 5-10*
+I briefly considered trying to use a RNN after reading an article about OpenAI's Dota 2 bot, which uses a LSTM RNN architecture. [Here is the article](https://blog.openai.com/openai-five/).
+However, after doing some research to see how you could feed images to a RNN, I found [this](https://arxiv.org/pdf/1505.00393.pdf) paper that details exactly that.
+OpenAI's agent does not process images, and so their problem is very different from mine. They feed a matrix that represents actions the bot can take on entities around them. I began trying to implement what the paper said was a good way to feed images to a RNN, but I couldn't quite figure out some of the intricacies, and I do not believe it would perform any better regardless.
+
+I have been running some alternate DQNs alongside each other to see how they compare.
+
+Here is a DQN with a single linear layer instead of two.
+[Single Linear Layer DQN over approximately 17500 games](Images/0.01scoreplt.png)
+
+I think that the two linear layer model is better, and I am going to keep training it in the hopes of it converging. I talked to Isaac about it and he said something that I have seen while reading about the subject.
+It is hard to make reinforcement learning algorithms converge, and they generally need a lot of time. So, I hope that is I keep running my two linear layer model it will converge.
+
+*July 11-12*
+I have started to think about whether the PLE game window is so simple that my convolution layers are destroying them. It is a tiny window, something like 64 x 82 pixels, and so I have created a version of my DQN that uses Gym instead.
+The GYM Pong window is a much larger 160 x 240, and I am suspecting that it may work better with my convolution layers.
+I have made an implementation of the DQN using Gym, and I will run it for a while and see how it does.
 
 
 <!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js"></script><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>

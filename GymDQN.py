@@ -23,6 +23,8 @@ from pathlib import Path
 from PIL import Image
 from itertools import count
 import seaborn as sns
+import skimage
+from skimage.color import rgb2gray
 import gym
 os.putenv('SDL_VIDEODRIVER', 'fbcon')
 os.environ["SDL_VIDEODRIVER"] = "dummy"
@@ -40,6 +42,7 @@ EPS_START = 0.9
 EPS_END = 0.05
 EPS_DECAY = 20
 TARGET_UPDATE = 10
+MEMORY_SIZE = 2000
 steps_done = 0
 scoreSaveLength = 0
 durationSaveLength = 0
@@ -49,6 +52,8 @@ actions = []
 losses = []
 parser = argparse.ArgumentParser(description='QLearningPong')
 parser.add_argument("--resume", default='', type=str, metavar='PATH', help='path to latest checkpoint')
+parser.add_argument("--lr", default=0.01, type=float, metavar='LR', help='learning rate')
+
 # set up matplotlib
 is_ipython = 'inline' in matplotlib.get_backend()
 if is_ipython:
@@ -78,28 +83,25 @@ class DQN(nn.Module):
         #     nn.Conv2d(512, 3, 1, 1, 0),
         #     nn.Linear()
         # )
-        self.conv1 = nn.Conv2d(3, 16, 8, 4)
-        self.bn1 = nn.BatchNorm2d(16)
-        self.conv2 = nn.Conv2d(16, 32, 4, 2)
-        self.bn2 = nn.BatchNorm2d(32)
-        self.conv3 = nn.Conv2d(32, 64, 3, 1)
-        self.bn3 = nn.BatchNorm2d(64)
-        # self.conv4 = nn.Conv2d(32, 64, 3, 2)
-        # self.bn4 = nn.BatchNorm2d(64)
-        self.linear1 = nn.Linear(22528, 3)
-        # self.linear2 = nn.Linear(512, 3)
+        self.conv1 = nn.Conv2d(4, 8, 4, 2)
+        self.bn1 = nn.BatchNorm2d(8)
+        self.conv2 = nn.Conv2d(8, 16, 2, 1)
+        self.bn2 = nn.BatchNorm2d(16)
+        self.conv3 = nn.Conv2d(16, 32, 3, 1)
+        self.bn3 = nn.BatchNorm2d(32)
+        self.conv4 = nn.Conv2d(32, 32, 3, 2)
+        self.bn4 = nn.BatchNorm2d(32)
+        self.linear1 = nn.Linear(59200, 512)
+        self.linear2 = nn.Linear(512, 3)
 
     def forward(self, x):
-        x = x.float() / 256
         x = F.relu(self.bn1(self.conv1(x)))
         x = F.relu(self.bn2(self.conv2(x)))
         x = F.relu(self.bn3(self.conv3(x)))
-        # x = F.relu(self.bn4(self.conv4(x)))
-        x = self.linear1(x.view(x.size(0), -1))
+        x = F.relu(self.bn4(self.conv4(x)))
+        x = F.relu(self.linear1(x.view(x.size(0), -1)))
+        x = self.linear2(x)
         return x
-        # out = self.main(x).squeeze()
-        # print(out.shape)
-        # return out
 class ReplayMemory(object):
 
     def __init__(self, capacity):
@@ -128,22 +130,27 @@ def main():
     # device = torch.device("cpu")
     policy_net = DQN().to(device)
     target_net = DQN().to(device)
-    optimizer = optim.RMSprop(policy_net.parameters(),  lr=0.0025, alpha=0.9, eps=1e-02, momentum=0.0)
     # optimizer = optim.Adam(policy_net.parameters(), lr=1e-4)
     episode_durations = []
     scores = []
-    memory = ReplayMemory(2000)
+    memory = ReplayMemory(MEMORY_SIZE)
+    learning_rate = 0.01
+    if args.lr:
+        learning_rate = args.lr
     if args.resume:
         if os.path.isfile(args.resume):
             print("=> loading checkpoint '{}'".format(args.resume))
             checkpoint = torch.load(args.resume)
             policy_net.load_state_dict(checkpoint['state_dict'])
-            target_net.load_state_dict(policy_net.state_dict())
+            target_net.load_state_dict(checkpoint['target_dict'])
+            optimizer = optim.RMSprop(policy_net.parameters(), lr=learning_rate, alpha=0.9, eps=1e-02, momentum=0.0)
             optimizer.load_state_dict(checkpoint['optimizer'])
             episode_durations = checkpoint['episodes']
             scores = checkpoint['scores']
+            steps_done = checkpoint['steps_done']
             target_net.eval()
     else:
+        optimizer = optim.RMSprop(policy_net.parameters(), lr=learning_rate, alpha=0.9, eps=1e-02, momentum=0.0)
         target_net.load_state_dict(policy_net.state_dict())
         target_net.eval()
 
@@ -157,14 +164,15 @@ def main():
             with open(file, "a") as f:
                 f.write("\n{},{},{},{}".format(previousName, currentName, action, reward))
     def correctPixelArray(nparray):
-        return np.ascontiguousarray(np.flip(nparray.transpose(2, 1, 0), axis=0), dtype=np.float32)
+        return torch.from_numpy(np.ascontiguousarray(np.flip(rgb2gray(nparray).transpose(1, 0), axis=0), dtype=np.uint8)).to(device)
     def optimize_model():
-        if len(memory) < BATCH_SIZE:
+        if len(memory) < BATCH_SIZE: # I'm using Replay Memory and sampling a batch from it randomly
             return
         transitions = memory.sample(BATCH_SIZE)
         # Transpose the batch (see http://stackoverflow.com/a/19343/3343043 for
         # detailed explanation).
-        batch = Transition(*zip(*transitions))
+        batch = Transition(*zip(*transitions)) # this takes the batch, which is a bunch of Transition tuples defined at the beginning of the code
+        # and transforms them into a single Transition with all of the respective current_screen, action, next_screen, reward as matrices
         # Compute a mask of non-final states and concatenate the batch elements
         non_final_mask = torch.tensor(tuple(map(lambda s: s is not None,
                                                 batch.next_screen)), device=device, dtype=torch.uint8)
@@ -185,7 +193,7 @@ def main():
 
         # Compute Huber loss
         loss = F.mse_loss(state_action_values, expected_state_action_values.unsqueeze(1))
-        losses.append(loss)
+        # losses.append(loss)
         # Optimize the model
         optimizer.zero_grad()
 
@@ -215,7 +223,7 @@ def main():
     def save_checkpoint(state, filename):
         torch.save(state, filename)
 
-    num_episodes = 5000
+    num_episodes = 100000
 
     def plot_score():
         global scoreSaveLength
@@ -229,7 +237,7 @@ def main():
         if len(score_t) > scoreSaveLength:  # save plot every 10 episodes
             saveLength = scoreSaveLength + 10
             # plt.savefig("C:\\Users\\Joseph\\PycharmProjects\\SURE\\scoreplt.png")
-            plt.savefig("/home/josephp/projects/def-dnowrouz/josephp/Pong/SURE/scoreplt.png")
+            plt.savefig(PATH+"GYMscoreplt.png")
             plt.close(fig)
         if is_ipython:
             display.clear_output(wait=True)
@@ -270,43 +278,45 @@ def main():
         # plt.savefig("C:\\Users\\Joseph\\PycharmProjects\\SURE\\lossplt.png")
         plt.savefig("/home/josephp/projects/def-dnowrouz/josephp/Pong/SURE/lossplt.png")
         plt.close(plot)
-    saveLimit = 1000
-    saveFlag = 0
+    def removeOldestElement(list):
+        list.reverse()
+        list.pop()
+        list.reverse()
+    current_screens = []
+    next_screens = []
     score = 0
-    episodes_left = num_episodes - len(episode_durations)
+    episodes_left = num_episodes - len(scores)
     for i_episode in range(episodes_left):
-        print("Episode = " + str(len(episode_durations)))
-        current_screen = env.reset()
-        current_screen = correctPixelArray(current_screen)
-        current_screen = torch.from_numpy(current_screen).unsqueeze(0).to(device)
+        print("Episode = " + str(len(scores)))
+        while (len(current_screens) < 4):
+            current_screen = env.reset()
+            current_screen = correctPixelArray(current_screen)
+            current_screens.append(current_screen)
         for t in count():
-
-            action = select_action(current_screen)
-            next_screen, reward, done, info = env.step(VALID_ACTION[action])
-            next_screen = correctPixelArray(next_screen)
-            next_screen = torch.from_numpy(next_screen).unsqueeze(0).to(device)
-            reward = np.clip(reward, -1, 1)
-            score += reward
-            # Move to the next state
-            memory.push(current_screen, action, next_screen, torch.tensor([reward]))
-            # Perform one step of the optimization (on the target network)
-            # Store the transition in memory
-            optimize_model()
-            current_screen = next_screen
+            for i in range(4):
+                action = select_action(torch.stack(current_screens).unsqueeze(0).float().to(device))
+                next_screen, reward, done, info = env.step(VALID_ACTION[action])
+                removeOldestElement(current_screens)
+                current_screens.append(correctPixelArray(next_screen))
+                if (len(next_screens) == 4):
+                    removeOldestElement(next_screens)
+                next_screens.append(correctPixelArray(next_screen))
+                reward = np.clip(reward, -1, 1)
+                score += reward
+                # Move to the next state
+                if (len(next_screens) == 4):
+                    current_screens_t = torch.stack(current_screens).unsqueeze(0).float().to(device)
+                    next_screens_t = torch.stack(next_screens).unsqueeze(0).float().to(device)
+                    memory.push(current_screens_t, action, next_screens_t, torch.Tensor([reward]))
+                optimize_model()
 
             if done:
-                episode_durations.append(t + 1)
                 scores.append(score)
                 plot_score()
-                plot_durations()
-                plotLoss()
-                # plot = sns.distplot(actions)
-                # fig = plot.get_figure()
-                # fig.savefig("{}/{}".format(PATH, str(len(episode_durations)) + "actions_histogram.png"))
-                # actions.clear()# reset the actions buffer
                 save_checkpoint({'episodes': episode_durations,
                                      'state_dict': policy_net.state_dict(),
-                                     'optimizer': optimizer.state_dict(), 'scores': scores}, PATH + "checkpoint.pt")
+                                     'target_dict': target_net.state_dict(),
+                                     'optimizer': optimizer.state_dict(), 'scores': scores, 'steps_done':steps_done}, PATH + "GYMcheckpoint.pt")
                 score = 0
                 break
                 # Update the target network

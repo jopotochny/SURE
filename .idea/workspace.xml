@@ -1,12 +1,1093 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ebe0b68b-3b41-4141-bff6-2fe3f4fbd3a1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RNNPong.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SkipFramesDQN.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/SURE.iml" afterPath="$PROJECT_DIR$/.idea/SURE.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AdvancedDQN.py" afterPath="$PROJECT_DIR$/AdvancedDQN.py" />
+    <list default="true" id="17d279c0-9cf4-4503-9f8c-1451627425af" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/ChangingLRQPong.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/GPUTwoLinearQPong.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/ThreeLinearQPong.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/TwoLinearQPong.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/SURE.iml" afterPath="$PROJECT_DIR$/.idea/SURE.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/AdvancedDQN.py" afterPath="$PROJECT_DIR$/AdvancedDQN.py" />
+      <change beforePath="$PROJECT_DIR$/GymDQN.py" afterPath="$PROJECT_DIR$/GymDQN.py" />
+      <change beforePath="$PROJECT_DIR$/RNNPong.py" afterPath="$PROJECT_DIR$/RNNPong.py" />
+      <change beforePath="$PROJECT_DIR$/checkpoint.pt" afterPath="$PROJECT_DIR$/checkpoint.pt" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1000current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1000previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1001current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1001previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1002current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1002previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1003current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1003previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1004current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1004previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1005current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1005previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1006current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1006previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1007current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1007previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1008current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1008previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1009current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1009previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1010current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1010previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1011current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1011previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1012current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1012previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1013current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1013previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1014current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1014previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1015current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1015previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1016current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1016previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1017current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1017previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1018current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1018previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1019current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1019previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1020current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1020previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1021current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1021previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1022current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1022previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1023current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1023previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1024current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1024previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1025current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1025previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1026current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1026previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1027current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1027previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1028current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1028previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1029current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1029previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1030current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1030previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1031current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1031previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1032current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1032previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1033current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1033previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1034current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1034previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1035current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1035previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1036current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1036previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1037current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1037previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1038current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1038previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1039current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1039previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1040current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1040previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1041current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1041previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1042current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1042previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1043current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1043previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1044current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1044previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1045current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1045previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1046current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1046previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1047current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1047previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1048current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1048previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1049current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1049previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1050current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1050previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1051current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1051previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1052current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1052previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1053current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1053previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1054current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1054previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1055current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1055previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1056current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1056previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1057current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1057previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1058current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1058previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1059current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1059previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1060current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1060previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1061current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1061previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1062current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1062previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1063current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1063previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1064current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1064previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1065current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1065previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1066current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1066previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1067current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1067previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1068current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1068previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1069current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1069previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1070current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1070previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1071current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1071previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1072current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1072previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1073current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1073previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1074current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1074previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1075current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1075previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1076current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1076previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1077current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1077previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1078current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1078previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1079current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1079previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1080current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1080previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1081current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1081previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1082current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1082previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1083current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1083previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1084current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1084previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1085current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1085previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1086current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1086previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1087current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1087previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1088current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1088previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1089current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1089previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1090current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1090previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1091current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1091previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1092current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1092previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1093current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1093previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1094current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1094previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1095current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1095previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1096current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1096previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1097current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1097previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1098current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1098previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1099current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1099previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1100current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1100previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1101current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1101previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1102current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1102previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1103current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1103previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1104current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1104previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1105current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1105previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1106current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1106previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1107current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1107previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1108current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1108previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1109current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1109previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1110current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1110previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1111current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1111previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1112current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1112previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1113current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1113previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1114current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1114previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1115current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1115previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1116current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1116previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1117current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1117previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1118current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1118previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1119current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1119previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1120current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1120previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1121current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1121previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1122current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1122previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1123current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1123previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1124current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1124previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1125current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1125previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1126current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1126previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1127current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1127previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1128current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1128previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1129current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1129previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1130current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1130previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1131current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1131previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1132current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1132previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1133current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1133previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1134current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1134previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1135current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1135previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1136current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1136previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1137current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1137previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1138current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1138previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1139current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1139previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1140current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1140previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1141current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1141previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1142current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1142previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1143current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1143previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1144current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1144previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1145current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1145previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1146current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1146previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1147current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1147previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1148current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1148previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1149current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1149previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1150current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1150previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1151current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1151previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1152current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1152previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1153current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1153previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1154current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1154previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1155current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1155previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1156current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1156previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1157current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1157previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1158current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1158previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1159current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1159previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1160current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1160previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1161current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1161previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1162current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1162previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1163current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1163previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1164current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1164previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1165current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1165previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1166current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1166previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1167current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1167previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1168current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1168previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1169current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1169previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1170current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1170previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1171current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1171previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1172current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1172previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1173current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1173previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1174current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1174previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1175current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1175previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1176current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1176previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1177current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1177previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1178current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1178previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1179current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1179previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1180current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1180previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1181current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1181previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1182current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1182previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1183current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1183previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1184current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1184previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1185current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1185previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1186current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1186previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1187current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1187previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1188current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1188previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1189current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1189previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1190current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1190previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1191current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1191previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1192current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1192previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1193current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1193previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1194current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1194previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1195current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1195previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1196current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1196previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1197current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1197previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1198current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1198previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1199current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1199previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1200current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1200previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1201current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1201previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1202current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1202previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1203current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1203previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1204current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1204previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1205current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1205previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1206current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1206previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1207current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1207previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1208current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1208previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1209current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1209previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1210current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1210previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1211current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1211previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1212current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1212previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1213current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1213previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1214current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1214previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1215current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1215previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1216current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1216previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1217current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1217previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1218current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1218previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1219current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1219previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1220current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1220previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1221current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1221previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1222current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1222previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1223current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1223previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1224current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1224previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1225current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1225previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1226current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1226previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1227current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1227previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1228current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1228previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1229current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1229previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1230current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1230previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1231current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1231previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1232current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1232previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1233current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1233previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1234current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1234previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1235current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1235previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1236current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1236previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1237current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1237previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1238current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1238previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1239current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1239previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1240current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1240previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1241current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1241previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1242current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1242previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1243current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1243previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1244current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1244previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1245current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1245previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1246current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1246previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1247current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1247previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1248current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1248previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1249current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1249previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1250current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1250previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1251current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1251previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1252current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1252previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1253current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1253previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1254current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1254previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1255current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1255previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1256current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1256previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1257current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1257previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1258current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1258previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1259current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1259previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1260current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1260previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1261current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1261previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1262current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1262previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1263current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1263previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1264current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1264previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1265current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1265previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1266current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1266previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1267current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1267previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1268current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1268previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1269current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1269previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1270current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1270previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1271current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1271previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1272current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1272previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1273current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1273previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1274current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1274previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1275current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1275previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1276current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1276previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1277current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1277previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1278current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1278previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1279current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1279previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1280current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1280previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1281current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1281previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1282current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1282previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1283current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1283previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1284current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1284previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1285current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1285previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1286current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1286previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1287current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1287previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1288current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1288previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1289current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1289previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1290current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1290previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1291current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1291previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1292current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1292previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1293current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1293previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1294current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1294previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1295current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1295previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1296current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1296previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1297current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1297previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1298current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1298previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1299current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1299previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1300current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1300previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1301current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1301previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1302current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1302previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1303current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1303previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1304current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1304previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1305current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1305previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1306current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1306previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1307current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1307previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1308current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1308previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1309current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1309previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1310current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1310previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1311current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1311previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1312current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1312previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1313current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1313previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1314current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1314previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1315current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1315previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1316current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1316previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1317current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1317previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1318current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1318previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1319current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1319previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1320current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1320previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1321current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1321previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1322current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1322previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1323current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1323previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1324current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1324previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1325current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1325previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1326current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1326previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1327current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1327previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1328current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1328previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1329current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1329previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1330current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1330previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1331current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1331previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1332current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1332previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1333current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1333previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1334current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1334previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1335current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1335previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1336current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1336previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1337current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1337previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1338current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1338previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1339current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1339previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1340current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1340previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1341current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1341previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1342current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1342previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1343current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1343previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1344current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1344previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1345current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1345previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1346current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1346previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1347current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1347previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1348current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1348previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1349current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1349previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1350current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1350previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1351current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1351previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1352current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1352previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1353current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1353previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1354current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1354previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1355current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1355previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1356current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1356previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1357current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1357previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1358current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1358previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1359current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1359previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1360current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1360previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1361current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1361previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1362current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1362previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1363current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1363previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1364current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1364previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1365current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1365previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1366current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1366previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1367current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1367previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1368current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1368previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1369current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1369previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1370current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1370previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1371current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1371previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1372current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1372previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1373current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1373previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1374current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1374previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1375current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1375previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1376current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1376previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1377current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1377previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1378current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1378previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1379current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1379previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1380current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1380previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1381current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1381previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1382current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1382previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1383current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1383previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1384current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1384previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1385current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1385previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1386current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1386previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1387current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1387previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1388current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1388previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1389current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1389previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1390current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1390previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1391current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1391previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1392current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1392previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1393current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1393previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1394current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1394previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1395current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1395previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1396current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1396previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1397current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1397previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1398current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1398previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1399current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1399previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1400current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1400previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1401current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1401previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1402current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1402previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1403current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1403previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1404current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1404previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1405current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1405previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1406current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1406previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1407current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1407previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1408current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1408previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1409current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1409previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1410current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1410previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1411current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1411previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1412current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1412previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1413current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1413previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1414current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1414previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1415current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1415previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1416current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1416previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1417current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1417previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1418current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1418previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1419current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1419previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1420current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1420previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1421current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1421previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1422current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1422previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1423current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1423previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1424current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1424previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1425current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1425previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1426current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1426previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1427current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1427previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1428current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1428previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1429current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1429previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1430current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1430previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1431current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1431previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1432current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1432previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1433current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1433previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1434current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1434previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1435current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1435previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1436current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1436previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1437current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1437previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1438current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1438previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1439current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1439previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1440current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1440previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1441current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1441previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1442current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1442previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1443current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1443previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1444current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1444previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1445current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1445previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1446current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1446previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1447current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1447previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1448current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1448previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1449current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1449previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1450current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1450previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1451current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1451previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1452current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1452previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1453current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1453previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1454current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1454previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1455current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1455previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1456current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1456previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1457current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1457previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1458current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1458previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1459current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1459previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1460current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1460previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1461current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1461previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1462current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1462previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1463current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1463previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1464current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1464previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1465current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1465previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1466current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1466previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1467current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1467previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1468current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1468previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1469current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1469previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1470current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1470previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1471current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1471previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1472current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1472previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1473current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1473previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1474current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1474previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1475current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1475previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1476current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1476previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1477current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1477previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1478current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1478previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1479current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1479previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1480current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1480previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1481current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1481previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1482current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1482previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1483current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1483previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1484current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1484previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1485current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1485previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1486current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1486previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1487current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1487previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1488current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1488previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1489current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1489previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1490current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1490previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1491current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1491previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1492current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1492previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1493current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1493previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1494current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1494previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1495current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1495previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1496current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1496previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1497current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1497previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1498current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1498previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1499current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1499previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1500current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1500previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1501current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1501previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1502current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1502previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1503current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1503previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1504current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1504previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1505current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1505previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1506current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1506previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1507current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1507previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1508current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1508previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1509current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1509previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1510current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1510previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1511current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1511previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1512current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1512previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1513current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1513previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1514current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1514previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1515current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1515previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1516current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1516previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1517current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1517previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1518current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1518previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1519current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1519previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1520current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1520previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1521current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1521previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1522current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1522previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1523current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1523previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1524current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1524previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1525current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1525previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1526current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1526previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1527current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1527previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1528current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1528previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1529current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1529previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1530current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1530previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1531current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1531previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1532current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1532previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1533current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1533previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1534current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1534previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1535current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1535previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1536current.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/1536previous.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/practiceFrames/Transitions.csv" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,13 +1098,85 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AdvancedDQN.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AdvancedDQN.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AdvancedDQN.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2196">
-              <caret line="155" column="25" lean-forward="true" selection-start-line="155" selection-start-column="25" selection-end-line="155" selection-end-column="25" />
+            <state relative-caret-position="389">
+              <caret line="204" column="24" lean-forward="true" selection-start-line="169" selection-start-column="4" selection-end-line="204" selection-end-column="24" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TwoLinearQPong.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TwoLinearQPong.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1358">
+              <caret line="296" column="99" lean-forward="false" selection-start-line="296" selection-start-column="39" selection-end-line="296" selection-end-column="99" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GymDQN.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/GymDQN.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="39" column="12" lean-forward="true" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ThreeLinearQPong.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ThreeLinearQPong.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-459">
+              <caret line="93" column="37" lean-forward="false" selection-start-line="93" selection-start-column="33" selection-end-line="93" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GPUTwoLinearQPong.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GPUTwoLinearQPong.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2227">
+              <caret line="141" column="19" lean-forward="false" selection-start-line="141" selection-start-column="19" selection-end-line="141" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChangingLRQPong.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ChangingLRQPong.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="559">
+              <caret line="55" column="40" lean-forward="false" selection-start-line="55" selection-start-column="40" selection-end-line="55" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scratch_2.py" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -32,8 +1185,8 @@
       <file leaf-file-name="RNNPong.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RNNPong.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="828">
-              <caret line="56" column="2" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+            <state relative-caret-position="559">
+              <caret line="114" column="25" lean-forward="false" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="25" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -41,13 +1194,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SkipFramesDQN.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SkipFramesDQN.py">
+      <file leaf-file-name="OneFileDQNPong.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OneFileDQNPong.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2957">
-              <caret line="125" column="21" lean-forward="false" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
+            <state relative-caret-position="4590">
+              <caret line="278" column="21" lean-forward="false" selection-start-line="278" selection-start-column="21" selection-end-line="278" selection-end-column="21" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pong.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PyGame-Learning-Environment/ple/games/pong.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6579">
+              <caret line="396" column="26" lean-forward="false" selection-start-line="396" selection-start-column="0" selection-end-line="396" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -62,24 +1227,52 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>score</find>
+      <find>glob</find>
+      <find>reward</find>
+      <find>long</find>
+      <find>print</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/SkipFramesDQN.py" />
+        <option value="$PROJECT_DIR$/PongAI.py" />
+        <option value="$PROJECT_DIR$/Computer.py" />
+        <option value="$PROJECT_DIR$/dataset/QLearningComputer.py" />
+        <option value="$PROJECT_DIR$/RandomComputer.py" />
+        <option value="$PROJECT_DIR$/Pong.py" />
+        <option value="$PROJECT_DIR$/PyGame-Learning-Environment/ple/games/pong.py" />
+        <option value="$PROJECT_DIR$/QLearningPong.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
+        <option value="$PROJECT_DIR$/MyPong.py" />
+        <option value="$PROJECT_DIR$/BasicCNN.py" />
+        <option value="$PROJECT_DIR$/BasicDQN.py" />
+        <option value="$PROJECT_DIR$/OneFileDQNPong.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py" />
         <option value="$PROJECT_DIR$/RNNPong.py" />
         <option value="$PROJECT_DIR$/AdvancedDQN.py" />
+        <option value="$PROJECT_DIR$/ChangingLRQPong.py" />
+        <option value="$PROJECT_DIR$/GPUTwoLinearQPong.py" />
+        <option value="$PROJECT_DIR$/ThreeLinearQPong.py" />
+        <option value="$PROJECT_DIR$/TwoLinearQPong.py" />
+        <option value="$PROJECT_DIR$/GymDQN.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="75" />
-    <option name="y" value="24" />
-    <option name="width" value="928" />
-    <option name="height" value="1056" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="782" />
+    <option name="y" value="8" />
+    <option name="width" value="974" />
+    <option name="height" value="1046" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -95,8 +1288,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -104,15 +1295,23 @@
               <item name="SURE" type="b2602c69:ProjectViewProjectNode" />
               <item name="SURE" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="SURE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SURE" type="462c0819:PsiDirectoryNode" />
+              <item name="dataset" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="Python" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -126,8 +1325,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.RNNPong">
-    <configuration name="RNNPong" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.GymDQN">
+    <configuration name="AdvancedDQN" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -139,14 +1338,98 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="SURE" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RNNPong.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AdvancedDQN.py" />
+      <option name="PARAMETERS" value="--resume checkpoint.pt --lr 0.01" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="GymDQN" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SURE" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GymDQN.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="ThreeLinearQPong" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SURE" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ThreeLinearQPong.py" />
+      <option name="PARAMETERS" value="--lr 0.005" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="TwoLinearQPong" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SURE" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TwoLinearQPong.py" />
+      <option name="PARAMETERS" value="--lr 0.01" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="scratch_2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SURE" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Python.AdvancedDQN" />
+      <item index="1" class="java.lang.String" itemvalue="Python.scratch_2" />
+      <item index="2" class="java.lang.String" itemvalue="Python.TwoLinearQPong" />
+      <item index="3" class="java.lang.String" itemvalue="Python.ThreeLinearQPong" />
+      <item index="4" class="java.lang.String" itemvalue="Python.GymDQN" />
+    </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.RNNPong" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.GymDQN" />
+        <item index="1" class="java.lang.String" itemvalue="Python.TwoLinearQPong" />
+        <item index="2" class="java.lang.String" itemvalue="Python.ThreeLinearQPong" />
+        <item index="3" class="java.lang.String" itemvalue="Python.scratch_2" />
+        <item index="4" class="java.lang.String" itemvalue="Python.AdvancedDQN" />
       </list>
     </recent_temporary>
   </component>
@@ -158,28 +1441,27 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ebe0b68b-3b41-4141-bff6-2fe3f4fbd3a1" name="Default" comment="" />
-      <created>1529789936319</created>
+      <changelist id="17d279c0-9cf4-4503-9f8c-1451627425af" name="Default" comment="" />
+      <created>1517872327798</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1529789936319</updated>
+      <updated>1517872327798</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="75" y="24" width="928" height="1056" extended-state="4" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.092672415" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08851422" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947367" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3326226" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3030303" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37878788" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -188,19 +1470,349 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3326226" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3071038" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17948718" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37909186" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="15" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AdvancedDQN.py">
+    <entry file="file://$PROJECT_DIR$/Computer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/QLearningComputer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="14" column="76" lean-forward="false" selection-start-line="14" selection-start-column="76" selection-end-line="14" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RandomComputer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="35" column="40" lean-forward="false" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pong.py" />
+    <entry file="file://$PROJECT_DIR$/Computer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RandomComputer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pong.py" />
+    <entry file="file://$PROJECT_DIR$/Computer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RandomComputer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pong.py" />
+    <entry file="file://$PROJECT_DIR$/Computer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RandomComputer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pong.py" />
+    <entry file="file://$PROJECT_DIR$/Computer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RandomComputer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pong.py" />
+    <entry file="file://$PROJECT_DIR$/Computer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RandomComputer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pong.py" />
+    <entry file="file://$PROJECT_DIR$/Computer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RandomComputer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pong.py" />
+    <entry file="file://$PROJECT_DIR$/Computer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RandomComputer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pong.py" />
+    <entry file="file://$PROJECT_DIR$/Computer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RandomComputer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="25" column="46" lean-forward="true" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pong.py" />
+    <entry file="file://$PROJECT_DIR$/Computer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RandomComputer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/QLearningComputer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/torch/nn/functional.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20060">
+          <caret line="1193" column="0" lean-forward="false" selection-start-line="1193" selection-start-column="0" selection-end-line="1193" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2017.3/system/python_stubs/-621990616/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61217">
+          <caret line="3601" column="8" lean-forward="false" selection-start-line="3601" selection-start-column="8" selection-end-line="3601" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PyGame-Learning-Environment/ple/ple.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="309" column="0" lean-forward="false" selection-start-line="309" selection-start-column="0" selection-end-line="309" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QLearningPong.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3366">
+          <caret line="218" column="27" lean-forward="false" selection-start-line="218" selection-start-column="27" selection-end-line="218" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicCNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2023">
+          <caret line="129" column="23" lean-forward="false" selection-start-line="119" selection-start-column="3" selection-end-line="129" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicDQN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1632">
+          <caret line="106" column="26" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="278" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pong.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyPong.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4539">
+          <caret line="277" column="27" lean-forward="false" selection-start-line="277" selection-start-column="27" selection-end-line="277" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OneFileDQNPong.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4590">
+          <caret line="278" column="21" lean-forward="false" selection-start-line="278" selection-start-column="21" selection-end-line="278" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PyGame-Learning-Environment/ple/games/pong.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6579">
+          <caret line="396" column="26" lean-forward="false" selection-start-line="396" selection-start-column="0" selection-end-line="396" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GPUTwoLinearQPong.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2227">
+          <caret line="141" column="19" lean-forward="false" selection-start-line="141" selection-start-column="19" selection-end-line="141" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ChangingLRQPong.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="55" column="40" lean-forward="false" selection-start-line="55" selection-start-column="40" selection-end-line="55" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThreeLinearQPong.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-459">
+          <caret line="93" column="37" lean-forward="false" selection-start-line="93" selection-start-column="33" selection-end-line="93" selection-end-column="37" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -209,18 +1821,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RNNPong.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="56" column="2" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SkipFramesDQN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2070">
-          <caret line="125" column="21" lean-forward="false" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
+        <state relative-caret-position="559">
+          <caret line="114" column="25" lean-forward="false" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="25" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -229,178 +1831,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AdvancedDQN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="389">
+          <caret line="204" column="24" lean-forward="true" selection-start-line="169" selection-start-column="4" selection-end-line="204" selection-end-column="24" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RNNPong.py">
+    <entry file="file://$PROJECT_DIR$/TwoLinearQPong.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="56" column="2" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+        <state relative-caret-position="1358">
+          <caret line="296" column="99" lean-forward="false" selection-start-line="296" selection-start-column="39" selection-end-line="296" selection-end-column="99" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SkipFramesDQN.py">
+    <entry file="file://$PROJECT_DIR$/GymDQN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2070">
-          <caret line="125" column="21" lean-forward="false" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AdvancedDQN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RNNPong.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="56" column="2" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SkipFramesDQN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2070">
-          <caret line="125" column="21" lean-forward="false" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AdvancedDQN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2124">
-          <caret line="128" column="35" lean-forward="true" selection-start-line="128" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SkipFramesDQN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2070">
-          <caret line="125" column="21" lean-forward="false" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RNNPong.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5346">
-          <caret line="307" column="0" lean-forward="true" selection-start-line="307" selection-start-column="0" selection-end-line="307" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AdvancedDQN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SkipFramesDQN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2070">
-          <caret line="125" column="21" lean-forward="false" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AdvancedDQN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2124">
-          <caret line="118" column="29" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="327" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SkipFramesDQN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5094">
-          <caret line="293" column="44" lean-forward="false" selection-start-line="293" selection-start-column="44" selection-end-line="293" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AdvancedDQN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AdvancedDQN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RNNPong.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="56" column="2" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SkipFramesDQN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2957">
-          <caret line="125" column="21" lean-forward="false" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AdvancedDQN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2196">
-          <caret line="155" column="25" lean-forward="true" selection-start-line="155" selection-start-column="25" selection-end-line="155" selection-end-column="25" />
+        <state relative-caret-position="274">
+          <caret line="39" column="12" lean-forward="true" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

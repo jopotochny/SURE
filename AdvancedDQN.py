@@ -53,7 +53,7 @@ actions = []
 losses = []
 parser = argparse.ArgumentParser(description='QLearningPong')
 parser.add_argument("--resume", default='', type=str, metavar='PATH', help='path to latest checkpoint')
-parser.add_argument("--lr", default='', type=float, metavar='LR', help='learning rate')
+parser.add_argument("--lr", default=0.01, type=float, metavar='LR', help='learning rate')
 # set up matplotlib
 is_ipython = 'inline' in matplotlib.get_backend()
 if is_ipython:
@@ -91,8 +91,8 @@ class DQN(nn.Module):
         self.bn3 = nn.BatchNorm2d(32)
         self.conv4 = nn.Conv2d(32, 32, 3, 2)
         self.bn4 = nn.BatchNorm2d(32)
-        self.linear1 = nn.Linear(3744, 3)
-        # self.linear2 = nn.Linear(512, 3)
+        self.linear1 = nn.Linear(3744, 512)
+        self.linear2 = nn.Linear(512, 3)
 
     def forward(self, x):
         # x = x.float() / 256
@@ -100,7 +100,8 @@ class DQN(nn.Module):
         x = F.relu(self.bn2(self.conv2(x)))
         x = F.relu(self.bn3(self.conv3(x)))
         x = F.relu(self.bn4(self.conv4(x)))
-        x = self.linear1(x.view(x.size(0), -1))
+        x = F.relu(self.linear1(x))
+        x = self.linear2(x.view(x.size(0), -1))
         return x
 class ReplayMemory(object):
 
@@ -127,8 +128,8 @@ def main():
     global steps_done
     args = parser.parse_args()
     # if gpu is to be used
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    # device = torch.device("cpu")
+    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cpu")
     policy_net = DQN().to(device)
     target_net = DQN().to(device)
     # optimizer = optim.Adam(policy_net.parameters(), lr=1e-4)
@@ -224,7 +225,7 @@ def main():
     def save_checkpoint(state, filename):
         torch.save(state, filename)
 
-    num_episodes = 5000
+    num_episodes = 100000
 
     def plot_score():
         global scoreSaveLength
@@ -285,9 +286,9 @@ def main():
     pushCounter = 0
     current_screens = []
     next_screens = []
-    episodes_left = num_episodes - len(episode_durations)
+    episodes_left = num_episodes - len(scores)
     for i_episode in range(episodes_left):
-        print("Episode = " + str(len(episode_durations)))
+        print("Episode = " + str(len(scores)))
         while(len(current_screens) < 4):
             current_screens.append(torch.from_numpy(p.getScreenGrayscale()))
 
