@@ -132,6 +132,7 @@ Here is a graph of my current best-working DQN. I have run it for approximately 
 ![Scores for 10,000 Games](Images/0.01twolinearscoreplt.png)
 
 *July 5-10*
+
 I briefly considered trying to use a RNN after reading an article about OpenAI's Dota 2 bot, which uses a LSTM RNN architecture. [Here is the article](https://blog.openai.com/openai-five/).
 However, after doing some research to see how you could feed images to a RNN, I found [this](https://arxiv.org/pdf/1505.00393.pdf) paper that details exactly that.
 OpenAI's agent does not process images, and so their problem is very different from mine. They feed a matrix that represents actions the bot can take on entities around them. I began trying to implement what the paper said was a good way to feed images to a RNN, but I couldn't quite figure out some of the intricacies, and I do not believe it would perform any better regardless.
@@ -139,12 +140,13 @@ OpenAI's agent does not process images, and so their problem is very different f
 I have been running some alternate DQNs alongside each other to see how they compare.
 
 Here is a DQN with a single linear layer instead of two.
-[Single Linear Layer DQN over approximately 17500 games](Images/0.01scoreplt.png)
+![Single Linear Layer DQN over approximately 17500 games](Images/0.01scoreplt.png)
 
 I think that the two linear layer model is better, and I am going to keep training it in the hopes of it converging. I talked to Isaac about it and he said something that I have seen while reading about the subject.
 It is hard to make reinforcement learning algorithms converge, and they generally need a lot of time. So, I hope that is I keep running my two linear layer model it will converge.
 
 *July 11-12*
+
 I have started to think about whether the PLE game window is so simple that my convolution layers are destroying them. It is a tiny window, something like 64 x 82 pixels, and so I have created a version of my DQN that uses Gym instead.
 The GYM Pong window is a much larger 160 x 240, and I am suspecting that it may work better with my convolution layers.
 I have made an implementation of the DQN using Gym, and I will run it for a while and see how it does.
