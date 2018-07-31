@@ -151,5 +151,15 @@ I have started to think about whether the PLE game window is so simple that my c
 The GYM Pong window is a much larger 160 x 240, and I am suspecting that it may work better with my convolution layers.
 I have made an implementation of the DQN using Gym, and I will run it for a while and see how it does.
 
+*July 13 - 25*
+
+I have been looking through the resources Derek sent me. In particular, Google's implementation of a reinforcement learning version of Pong was pretty informative. I decided to try to
+translate their Tensorflow code into PyTorch code, and I have taken their reward discounting function to use in my implementations to see if it improves them.
+
+A strange thing I have noticed looking at Google's loss is that their loss starts at about zero, and then nicely curves downwards into the negatives, while mine jumps back and forth across the zero axis. I have verified that I am using the correct loss function, and after looking closely at every part of the code I cannot figure out how their loss acts this way. Tensorflow must do some stuff behind the scenes that I do not know about.
+
+I have also found an implementation of Cart-Pole using the Reinforce algorithm that Derek sent me a paper about. After running it myself, and looking at the loss function, their
+loss happens to also jump across the zero axis over and over, so the fact that my loss does this might be ok after all. I have made an implementation of Pong using the Reinforce algorithm, and we will see whether it works out. 
+
 
 <!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js"></script><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>

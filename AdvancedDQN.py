@@ -42,6 +42,7 @@ EPS_START = 0.9
 EPS_END = 0.05
 EPS_DECAY = 200
 TARGET_UPDATE = 10
+DISCOUNT_RATE = 0.95
 steps_done = 0
 scoreSaveLength = 0
 durationSaveLength = 0
@@ -83,7 +84,7 @@ class DQN(nn.Module):
     #         nn.Conv2d(512, 3, 1, 1),
     #         nn.Linear(13, 3)
     # )
-        self.conv1 = nn.Conv2d(4, 8, 4, 2)
+        self.conv1 = nn.Conv2d(4, 16, 4, 2)
         self.bn1 = nn.BatchNorm2d(8)
         self.conv2 = nn.Conv2d(8, 16, 2, 1)
         self.bn2 = nn.BatchNorm2d(16)
@@ -99,7 +100,7 @@ class DQN(nn.Module):
         x = F.relu(self.bn1(self.conv1(x)))
         x = F.relu(self.bn2(self.conv2(x)))
         x = F.relu(self.bn3(self.conv3(x)))
-        x = F.relu(self.bn4(self.conv4(x)))
+        # x = F.relu(self.bn4(self.conv4(x)))
         x = F.relu(self.linear1(x))
         x = self.linear2(x.view(x.size(0), -1))
         return x
@@ -182,7 +183,10 @@ def main():
                                            if s is not None])
         state_batch = torch.cat(batch.current_screen).to(device)
         action_batch = torch.cat(batch.action).to(device)
-        reward_batch = torch.cat(batch.reward).to(device)
+        processed_rewards = discount_rewards(batch.reward, DISCOUNT_RATE)
+        processed_rewards -= np.mean(processed_rewards)
+        processed_rewards /= np.std(processed_rewards)
+        reward_batch = torch.cat(torch.tensor(processed_rewards)).to(device)
         # Compute Q(s_t, a) - the model computes Q(s_t), then we select the
         # columns of actions taken
         state_action_values = policy_net(state_batch).gather(1, action_batch)
@@ -195,7 +199,7 @@ def main():
 
         # Compute Huber loss
         loss = F.mse_loss(state_action_values, expected_state_action_values.unsqueeze(1))
-        # losses.append(loss)
+        losses.append(loss)
         # Optimize the model
         optimizer.zero_grad()
 
@@ -204,7 +208,16 @@ def main():
             param.grad.data.clamp_(-1, 1)
         optimizer.step()
 
-
+    def discount_rewards(rewards, gamma):
+        # taken from https://github.com/GoogleCloudPlatform/tensorflow-without-a-phd/blob/master/tensorflow-rl-pong/trainer/helpers.py
+        rewards = np.array(rewards)
+        discounted_r = np.zeros_like(rewards)
+        running_add = 0
+        for t in reversed(range(0, rewards.size)):
+            if rewards[t] != 0: running_add = 0  # reset the sum, since this was a game boundary (pong specific!)
+            running_add = running_add * gamma + rewards[t]
+            discounted_r[t] = running_add
+        return discounted_r.tolist()
     def select_action(current_screen):
         global steps_done
         sample = random.random()
@@ -286,6 +299,7 @@ def main():
     pushCounter = 0
     current_screens = []
     next_screens = []
+    flag = True
     episodes_left = num_episodes - len(scores)
     for i_episode in range(episodes_left):
         print("Episode = " + str(len(scores)))
@@ -295,7 +309,7 @@ def main():
         for t in count():
             for i in range(4):
                 action = select_action(torch.stack(current_screens).unsqueeze(0).float().to(device))
-                reward = torch.Tensor([p.act(ACTION_SET[action])])
+                reward = [p.act(ACTION_SET[action])]
                 reward = np.clip(reward, -1, 1)
                 done = p.game_over()
                 # Move to the next state
@@ -317,15 +331,25 @@ def main():
                 scores.append(p.score())
                 plot_score()
                 # plot_durations()
-                # plotLoss()
+                plotLoss()
                 # plot = sns.distplot(actions)
                 # fig = plot.get_figure()
                 # fig.savefig("{}/{}".format(PATH, str(len(episode_durations)) + "actions_histogram.png"))
                 # actions.clear()# reset the actions buffer
-                save_checkpoint({'episodes': episode_durations,
+                if flag == True:
+                    save_checkpoint({'episodes': episode_durations,
                                      'state_dict': policy_net.state_dict(),
                                      'target_dict': target_net.state_dict(),
-                                     'optimizer': optimizer.state_dict(), 'scores': scores, 'steps_done':steps_done}, PATH + "checkpoint.pt")
+                                     'optimizer': optimizer.state_dict(), 'scores': scores, 'steps_done': steps_done},
+                                    PATH + "checkpoint1.pt")
+                    flag = not flag
+                else:
+                    save_checkpoint({'episodes': episode_durations,
+                                     'state_dict': policy_net.state_dict(),
+                                     'target_dict': target_net.state_dict(),
+                                     'optimizer': optimizer.state_dict(), 'scores': scores, 'steps_done': steps_done},
+                                    PATH + "checkpoint2.pt")
+                    flag = not flag
                 p.reset_game()
                 break
                 # Update the target network
