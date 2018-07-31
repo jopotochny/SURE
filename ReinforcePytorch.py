@@ -8,8 +8,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from torch.distributions import Categorical
-
-
+import matplotlib.pyplot as plt
+# PATH = "/home/josephp/projects/def-dnowrouz/josephp/Pong/SURE/"
+PATH = "C:\\Users\\Joseph\\PycharmProjects\\SURE\\"
 parser = argparse.ArgumentParser(description='PyTorch REINFORCE example')
 parser.add_argument('--gamma', type=float, default=0.99, metavar='G',
                     help='discount factor (default: 0.99)')
@@ -20,7 +21,7 @@ parser.add_argument('--render', action='store_true',
 parser.add_argument('--log-interval', type=int, default=10, metavar='N',
                     help='interval between training status logs (default: 10)')
 args = parser.parse_args()
-
+losses = []
 
 env = gym.make('CartPole-v0')
 env.seed(args.seed)
@@ -61,6 +62,17 @@ def select_action(state):
     return action.item()
 
 
+def plotLoss():
+    plot = plt.figure(num="Loss")
+    plt.clf()
+    losses_t = torch.tensor(losses, dtype=torch.float)
+    plt.title('Loss...')
+    plt.xlabel('Episode')
+    plt.ylabel('Loss')
+    plt.plot(losses_t.numpy())
+    # plt.savefig("C:\\Users\\Joseph\\PycharmProjects\\SURE\\lossplt.png")
+    plt.savefig(PATH + "cartpolelossplt.png")
+    plt.close(plot)
 def finish_episode():
     R = 0
     policy_loss = []
@@ -74,7 +86,7 @@ def finish_episode():
         policy_loss.append(-log_prob * reward)
     optimizer.zero_grad()
     policy_loss = torch.cat(policy_loss).sum()
-    print("Loss: ", policy_loss)
+    losses.append(policy_loss)
     policy_loss.backward()
     optimizer.step()
     del policy.rewards[:]
@@ -118,7 +130,7 @@ def main():
         if c % TARGET_UPDATE == 0:
             target.load_state_dict(policy.state_dict())
         running_reward = running_reward * 0.99 + t * 0.01
-        finish_episode_Q_func(0.5)
+        finish_episode()
         if i_episode % args.log_interval == 0:
             print('Episode {}\tLast length: {:5d}\tAverage length: {:.2f}'.format(
                 i_episode, t, running_reward))
@@ -130,3 +142,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    plotLoss()

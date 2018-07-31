@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17d279c0-9cf4-4503-9f8c-1451627425af" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/TFInspiredDQN.py" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/AdvancedDQN.py" afterPath="$PROJECT_DIR$/AdvancedDQN.py" />
-      <change beforePath="$PROJECT_DIR$/GymDQN.py" afterPath="$PROJECT_DIR$/GymDQN.py" />
       <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change beforePath="$PROJECT_DIR$/ReinforcePytorch.py" afterPath="$PROJECT_DIR$/ReinforcePytorch.py" />
+      <change beforePath="$PROJECT_DIR$/reinforcelossplt.png" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,10 +39,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GymDQN.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GymDQN.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GymDQN.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="-238">
               <caret line="127" column="21" lean-forward="false" selection-start-line="127" selection-start-column="21" selection-end-line="127" selection-end-column="21" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -68,8 +66,8 @@
       <file leaf-file-name="ReinforcePong.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ReinforcePong.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5661">
-              <caret line="341" column="23" lean-forward="false" selection-start-line="341" selection-start-column="23" selection-end-line="341" selection-end-column="23" />
+            <state relative-caret-position="629">
+              <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="51" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -77,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReinforcePytorch.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ReinforcePytorch.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ReinforcePytorch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="25" column="19" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+            <state relative-caret-position="480">
+              <caret line="121" column="29" lean-forward="true" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -181,11 +179,11 @@
         <option value="$PROJECT_DIR$/ThreeLinearQPong.py" />
         <option value="$PROJECT_DIR$/TwoLinearQPong.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py" />
-        <option value="$PROJECT_DIR$/ReinforcePytorch.py" />
         <option value="$PROJECT_DIR$/ReinforcePong.py" />
         <option value="$PROJECT_DIR$/TFInspiredDQN.py" />
         <option value="$PROJECT_DIR$/AdvancedDQN.py" />
         <option value="$PROJECT_DIR$/GymDQN.py" />
+        <option value="$PROJECT_DIR$/ReinforcePytorch.py" />
       </list>
     </option>
   </component>
@@ -243,7 +241,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.GymDQN">
+  <component name="RunManager" selected="Python.ReinforcePytorch">
     <configuration name="AdvancedDQN" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -343,10 +341,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.GymDQN" />
-        <item index="1" class="java.lang.String" itemvalue="Python.AdvancedDQN" />
-        <item index="2" class="java.lang.String" itemvalue="Python.ReinforcePong" />
-        <item index="3" class="java.lang.String" itemvalue="Python.ReinforcePytorch" />
+        <item index="0" class="java.lang.String" itemvalue="Python.ReinforcePytorch" />
+        <item index="1" class="java.lang.String" itemvalue="Python.GymDQN" />
+        <item index="2" class="java.lang.String" itemvalue="Python.AdvancedDQN" />
+        <item index="3" class="java.lang.String" itemvalue="Python.ReinforcePong" />
         <item index="4" class="java.lang.String" itemvalue="Python.TFInspiredDQN" />
       </list>
     </recent_temporary>
@@ -376,7 +374,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2965368" sideWeight="0.50421494" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3326226" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2965368" sideWeight="0.49578503" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2965368" sideWeight="0.49578503" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.49789253" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -722,16 +720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ReinforcePytorch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="25" column="19" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TwoLinearQPong.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4862">
@@ -762,22 +750,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ReinforcePong.py">
+    <entry file="file://$PROJECT_DIR$/GymDQN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5661">
-          <caret line="341" column="23" lean-forward="false" selection-start-line="341" selection-start-column="23" selection-end-line="341" selection-end-column="23" />
+        <state relative-caret-position="-238">
+          <caret line="127" column="21" lean-forward="false" selection-start-line="127" selection-start-column="21" selection-end-line="127" selection-end-column="21" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GymDQN.py">
+    <entry file="file://$PROJECT_DIR$/ReinforcePong.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="127" column="21" lean-forward="false" selection-start-line="127" selection-start-column="21" selection-end-line="127" selection-end-column="21" />
+        <state relative-caret-position="629">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="51" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ReinforcePytorch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="121" column="29" lean-forward="true" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
